@@ -78,9 +78,9 @@ Valorantには、エイムの練習法やキャラクターのスキルの使い
 - シェア機能
 
 **【本リリース】**
-- お気に入りのカスタマイズ化（自身がつけたタグで管理できる）
+- お気に入りのカスタマイズ化（自身がつけたフォルダで管理できる）
 - カテゴリーのフォロー機能＆通知機能
-  - フォローしているカテゴリーに新規テクニックが投稿されたことをお知らせ
+  - フォローしているカテゴリーに新規テクニックが投稿されたことをメールでお知らせ
 
 ## ■ 機能の実装方針予定
 | 機能            | 使用技術                                               |
@@ -94,3 +94,6 @@ Valorantには、エイムの練習法やキャラクターのスキルの使い
 | 通知機能      | ActionMailer, SendGrid                             |
 | ログイン機能    | devise+OmniAuth(GoogleOAuth2) |
 | UI             | Tailwind CSS, DaisyUI                                   |
+
+## 画面遷移図
+[Figma](https://www.figma.com/design/sg79BYQysGnZ3rH7HbFXIe/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=ngO00vTTUwk5as8I-1)
