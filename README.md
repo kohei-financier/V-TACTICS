@@ -100,4 +100,4 @@ Valorantには、エイムの練習法やキャラクターのスキルの使い
 
 ## ER図
 [dbdiagram](https://dbdiagram.io/d/valorant_portal-67c56c7a263d6cf9a0032850)
-[![Image from Gyazo](https://i.gyazo.com/08376b1dc1caeab1e6c3471a9cb6102b.png)](https://gyazo.com/08376b1dc1caeab1e6c3471a9cb6102b)
+[![Image from Gyazo](https://i.gyazo.com/6cdd2c0680669c83647e487ac8af32b1.png)](https://gyazo.com/6cdd2c0680669c83647e487ac8af32b1)
