@@ -1,0 +1,33 @@
+<div class="flex min-h-full flex-col justify-center md:m-12">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">ログイン</h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field py-2 px-4">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-md input-bordered w-full", placeholder: "メールアドレス" %>
+      </div>
+
+      <div class="field py-2 px-4">
+        <%= f.password_field :password, autocomplete: "current-password", class: "input input-md input-bordered w-full", placeholder: "パスワード" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field text-center py-2 px-4">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions text-center py-2 px-4">
+        <%= f.submit "Log in", class: "btn btn-wide" %>
+      </div>
+    <% end %>
+
+    <div class="text-center">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

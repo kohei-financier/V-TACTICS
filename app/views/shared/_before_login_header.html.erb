@@ -83,7 +83,7 @@
         </li>
       </ul>
     </div>
-    <a class="btn btn-ghost text-xl">V-TACTICS</a>
+    <%= link_to 'V-TACTICS', root_path, class: "btn btn-ghost text-xl" %>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -142,8 +142,9 @@
     </ul>
   </div>
   <div class="navbar-end">
-    こんにちは、<%= current_user.name %>さん！ 
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn" %>
+    ログアウト状態 
+    <%= link_to 'ログイン', new_user_session_path, class: "btn" %>
+    <%= link_to '新規登録', new_user_registration_path, class: "btn" %>
   </div>
 </div>
 </header>
