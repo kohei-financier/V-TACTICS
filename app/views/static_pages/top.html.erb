@@ -1,1 +1,22 @@
-<h1 class="btn">Hello,world</h1>
+<div class="flex min-h-full flex-col justify-center md:m-12 space-y-4">
+  <% if @techniques.present? %>
+    <% @techniques.each do |technique| %>
+      <div class="card bg-base-100 w-96 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title"><%= technique.title %></h2>
+          <ul>
+            <li>ソースタイプ：<%= technique.source_type %></li>
+            <li>タイムスタンプ：<%= technique.video_timestamp %> 秒</li>
+            <li>キャラクター：<%= technique.character %></li>
+            <li>マップ：<%= technique.map %></li>
+          </ul>
+        </div>
+        <figure>
+          <%= technique.source_url.html_safe %>
+        </figure>
+      </div>
+    <% end %>
+  <% else %>
+    <div role="alert" class="alert alert-error"><span>テクニックがありません</span></div>
+  <% end %>
+</div>
