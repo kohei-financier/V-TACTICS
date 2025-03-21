@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "★テスト！" %></title>
+    <title><%= content_for(:title) || "Myapp" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -24,7 +24,6 @@
     <% else %>
       <%= render "shared/before_login_header" %>
     <% end %>
-    <%= render 'shared/flash_message' %>
     <%= yield %>
     <%= render "shared/footer" %>
   </body>

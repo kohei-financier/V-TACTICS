@@ -10,15 +10,10 @@ class TechniquesController < ApplicationController
   def create
     @technique = current_user.techniques.build(technique_params)
     if @technique.save
-      redirect_to techniques_path, notice: t("defaults.flash_message.created", item: Technique.model_name.human)
+      redirect_to techniques_path
     else
-      flash.now[:error] = t("defaults.flash_message.not_created", item: Technique.model_name.human)
-      render :new, status: :unprocessable_entity
+      render :new
     end
-  end
-
-  def show
-    @technique = Technique.find(params[:id])
   end
 
   private
