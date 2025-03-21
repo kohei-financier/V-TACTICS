@@ -2,23 +2,23 @@
   <% if @techniques.present? %>
     <% @techniques.each do |technique| %>
       <div class="max-w-sm rounded overflow-hidden shadow-lg">
-        <iframe class="w-full aspect-video"
-                src="<%= technique.source_url %>"
-                frameborder="0"
-                allowfullscreen>
-        </iframe>
         <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2"><%= technique.title %></div>
+          <a class="font-bold text-xl mb-2"><%= link_to technique.title, technique_path(technique) %></a>
           <p class="text-gray-700 text-base">
             キャラクター: <%= technique.character %><br>
             マップ: <%= technique.map %><br>
             タイムスタンプ: <%= technique.video_timestamp %> 秒
           </p>
         </div>
-        <div class="px-6 pt-4 pb-2">
+        <div class="px-6 pt-2 pb-2">
           <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= technique.character %></span>
           <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= technique.map %></span>
         </div>
+        <iframe class="w-full aspect-video"
+                src="https://www.youtube.com/embed/<%= technique.embed_id_from_youtube_url %>&amp;start=<%= technique.calculate_video_timestamp %>"
+                frameborder="0"
+                allowfullscreen>
+        </iframe>
       </div>
     <% end %>
   <% else %>

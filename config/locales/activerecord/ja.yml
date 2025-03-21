@@ -1,18 +1,18 @@
 ja:
   activerecord:
     models:
-      user: ユーザー
-      techniques: テクニック
+      user: "ユーザー"
+      technique: "テクニック"
     attributes:
       user:
-        name: ユーザー名
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード（確認用）
+        name: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
       techniques:
-        title: タイトル
-        source_type: ソースタイプ
-        source_url: URL
-        video_timestamp: ビデオの再生地点
-        character: キャラクター
-        map: マップ
+        title: "タイトル"
+        source_type: "ソースタイプ"
+        source_url: "URL"
+        video_timestamp: "ビデオの再生地点"
+        character: "キャラクター"
+        map: "マップ"

@@ -1,22 +1,23 @@
 <div class="flex min-h-full flex-col justify-center md:m-12">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">YouTube投稿作成</h2>
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">テクニック登録</h2>
   </div>
 
-  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
 
     <%= form_with model: @technique do |f| %>
+      <%= render 'shared/error_message', object: f.object %>
       <div class="field py-2 px-4">
         <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "タイトル" %>
       </div>
       <div class="field py-2 px-4">
-        <%= f.text_field :source_type, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "ソースタイプ" %>
+        <%= f.select :source_type, Technique.source_types.keys.map { |key| [key.humanize, key] }, {}, class: "input input-md input-bordered w-full" %>
       </div>
       <div class="field py-2 px-4">
-        <%= f.text_field :source_url, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "YouTubeURL" %>
+        <%= f.text_field :source_url, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "URL" %>
       </div>
       <div class="field py-2 px-4">
-        <%= f.text_field :video_timestamp, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "タイムスタンプ" %>
+        <%= f.text_field :video_timestamp, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "再生開始地点(HH:MM:SS or MM:SS or SSの形で入力)" %>
       </div>
       <div class="field py-2 px-4">
         <%= f.text_field :character, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "キャラクター" %>
@@ -25,7 +26,7 @@
         <%= f.text_field :map, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "マップ" %>
       </div>
 
-      <div class="actions text-center py-2 px-4">
+      <div class="actions text-center py-4 px-4">
         <%= f.submit "投稿する！", class: "btn btn-wide" %>
       </div>
     <% end %>
