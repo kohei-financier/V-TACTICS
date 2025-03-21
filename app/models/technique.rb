@@ -8,12 +8,12 @@ class Technique < ApplicationRecord
 
   def embed_id_from_youtube_url
     # 埋め込み形式でIDを抜き出し（プレイヤー用）
-    source_url.split('/').last if youtube?
+    source_url.split("/").last if youtube?
   end
 
   def only_id_from_youtube_url
     # IDだけを抜き出し（サムネイル用）
-    embed_id_from_youtube_url.split('?').first
+    embed_id_from_youtube_url.split("?").first
   end
 
   def calculate_video_timestamp
