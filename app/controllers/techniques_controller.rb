@@ -10,7 +10,7 @@ class TechniquesController < ApplicationController
   def create
     @technique = current_user.techniques.build(technique_params)
     if @technique.save
-      redirect_to techniques_path, notice: t("defaults.flash_message.created", item: Technique.model_name.human)
+      redirect_to techniques_path, success: t("defaults.flash_message.created", item: Technique.model_name.human)
     else
       flash.now[:error] = t("defaults.flash_message.not_created", item: Technique.model_name.human)
       render :new, status: :unprocessable_entity
@@ -19,6 +19,26 @@ class TechniquesController < ApplicationController
 
   def show
     @technique = Technique.find(params[:id])
+  end
+
+  def edit
+    @technique = current_user.techniques.find(params[:id])
+  end
+
+  def update
+    @technique = current_user.techniques.find(params[:id])
+    if @technique.update(technique_params)
+      redirect_to technique_path(@technique), success: t("defaults.flash_message.updated", item: Technique.model_name.human)
+    else
+      flash.now[:error] = t("defaults.flash_message.not_updated", item: Technique.model_name.human)
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    technique = current_user.techniques.find(params[:id])
+    technique.destroy!
+    redirect_to techniques_path, success: t("defaults.flash_message.deleted", item: Technique.model_name.human), status: :see_other
   end
 
   private
