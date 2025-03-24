@@ -10,4 +10,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :techniques, dependent: :destroy
+
+  def own?(technique)
+    self.id == technique.user_id
+  end
 end
