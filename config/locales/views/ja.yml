@@ -11,10 +11,10 @@ ja:
       deleted: "%{item}を削除しました"
   techniques:
     new:
-      title: ”投稿作成"
+      title: "テクニック投稿作成"
     show:
-      title: "投稿詳細"
+      title: "テクニック投稿詳細"
     index:
-      title: "投稿一覧"
+      title: "テクニック投稿一覧"
     edit:
-      title: "投稿編集"
+      title: "テクニック投稿編集"
