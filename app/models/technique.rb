@@ -16,18 +16,24 @@ class Technique < ApplicationRecord
     embed_id_from_youtube_url.split("?").first
   end
 
-  def calculate_video_timestamp
-    time = video_timestamp.split(":").map(&:to_i)
+  def x_to_twitter_change_url
+    source_url.sub("x.com", "twitter.com") if twitter?
+  end
 
-    case time.length
-    when 3
-      time[0]*3600 + time[1]*60 + time[2]
-    when 2
-      time[0]*60 + time[1]
-    when 1
-      time[0]
-    else
-      0
+  def calculate_video_timestamp
+    if source_type == "youtube"
+      time = video_timestamp.split(":").map(&:to_i)
+
+      case time.length
+      when 3
+        time[0]*3600 + time[1]*60 + time[2]
+      when 2
+        time[0]*60 + time[1]
+      when 1
+        time[0]
+      else
+        0
+      end
     end
   end
 end

@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  resources :techniques, only: %i[index new create show edit update destroy]
+  resources :techniques, only: %i[index]
+  namespace :techniques do
+    resources :youtube, only: %i[new create show edit update destroy]
+    resources :twitter, only: %i[new create show edit update destroy]
+  end
 end

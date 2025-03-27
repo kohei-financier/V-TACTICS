@@ -6,17 +6,14 @@
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
 
-    <%= form_with model: @technique do |f| %>
+    <%= form_with model: @technique, url: techniques_twitter_index_path do |f| %>
       <%= render 'shared/error_message', object: f.object %>
-        <%= f.hidden_field :source_type, value: "youtube", class: "input input-md input-bordered w-full" %>
+        <%= f.hidden_field :source_type %>
       <div class="field py-2 px-4">
         <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "タイトル" %>
       </div>
       <div class="field py-2 px-4">
-        <%= f.text_field :source_url, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "URL" %>
-      </div>
-      <div class="field py-2 px-4">
-        <%= f.text_field :video_timestamp, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "再生開始地点(HH:MM:SS or MM:SS or SSの形で入力)" %>
+        <%= f.text_field :source_url, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "XのURL" %>
       </div>
       <div class="field py-2 px-4">
         <%= f.text_field :character, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "キャラクター" %>
