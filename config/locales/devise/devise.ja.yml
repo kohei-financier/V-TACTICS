@@ -35,6 +35,8 @@ ja:
       updated: "パスワードが正常に変更されました。"
       updated_not_active: "パスワードが正常に変更されました。"
     registrations:
+      new:
+        title: "新規登録"
       destroyed: "アカウントを削除しました。またのご利用をお待ちしております。"
       signed_up: "アカウント登録が完了しました。"
       signed_up_but_inactive: 'ログインするためには、アカウントを有効化してください。'
@@ -45,6 +47,7 @@ ja:
       updated_but_not_signed_in: "アカウント情報を更新しましたが、パスワードが変更されたため再度ログインが必要です。"
     sessions:
       new:
+        title: "ログイン"
         login: "ログイン"
         remember_me: "ログイン情報を記憶する"
       signed_in: "ログインしました。"

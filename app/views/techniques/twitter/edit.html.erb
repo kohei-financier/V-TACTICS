@@ -1,3 +1,4 @@
+<% content_for(:title, t(".title")) %>
 <div class="flex min-h-full flex-col justify-center md:m-12">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">テクニック登録</h2>
@@ -5,19 +6,14 @@
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
 
-    <%= form_with model: @technique do |f| %>
+    <%= form_with model: @technique, url: techniques_twitter_path(@technique) do |f| %>
       <%= render 'shared/error_message', object: f.object %>
+        <%= f.hidden_field :source_type %>
       <div class="field py-2 px-4">
         <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "タイトル" %>
       </div>
       <div class="field py-2 px-4">
-        <%= f.select :source_type, Technique.source_types.keys.map { |key| [key.humanize, key] }, {}, class: "input input-md input-bordered w-full" %>
-      </div>
-      <div class="field py-2 px-4">
-        <%= f.text_field :source_url, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "URL" %>
-      </div>
-      <div class="field py-2 px-4">
-        <%= f.text_field :video_timestamp, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "再生開始地点(HH:MM:SS or MM:SS or SSの形で入力)" %>
+        <%= f.text_field :source_url, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "XのURL" %>
       </div>
       <div class="field py-2 px-4">
         <%= f.text_field :character, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "キャラクター" %>
