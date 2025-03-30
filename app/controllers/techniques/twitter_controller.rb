@@ -1,4 +1,5 @@
 class Techniques::TwitterController < ApplicationController
+  before_action :authenticate_user!, except: [ :show ]
   def new
     @technique = Technique.new(source_type: "twitter")
   end

@@ -17,7 +17,8 @@ class Technique < ApplicationRecord
   end
 
   def x_to_twitter_change_url
-    source_url.sub("x.com", "twitter.com") if twitter?
+    return unless twitter? && source_url.match?(/\Ahttps:\/\/x\.com\//)
+    source_url.sub("x.com", "twitter.com")
   end
 
   def calculate_video_timestamp
@@ -35,5 +36,13 @@ class Technique < ApplicationRecord
         0
       end
     end
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "title", "character", "map" ]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
   end
 end

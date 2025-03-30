@@ -1,6 +1,13 @@
 <% content_for(:title, t(".title")) %>
+
+<%= search_form_for @q, url: search_techniques_path, method: :get do |f| %>
+  <%= f.search_field :title_or_character_or_map_cont, class: "input input-md input-bordered w-full", placeholder: "タイトル・キャラクター・マップ名で検索" %>
+  <%= f.submit '検索', class: "btn" %>
+<% end %>
+
+<h1>検索結果</h1>
 <div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">
-  <% youtube_techniques = @techniques.where(source_type: "youtube") %>
+  <% youtube_techniques = @results.where(source_type: "youtube") %>
   <% if youtube_techniques.present? %>
     <% youtube_techniques.each do |technique| %>
       <div class="w-1/3 rounded overflow-hidden shadow-xl flex flex-col">
@@ -49,7 +56,7 @@
       <span>YouTubeのテクニックは投稿されていません</span>
     </div>
   <% end %>
-  <% twitter_techniques = @techniques.where(source_type: "twitter") %>
+  <% twitter_techniques = @results.where(source_type: "twitter") %>
   <% if twitter_techniques.present? %>
     <% twitter_techniques.each do |technique| %>
       <div class="w-1/3 rounded overflow-hidden shadow-xl flex flex-col">
