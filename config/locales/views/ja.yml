@@ -10,11 +10,21 @@ ja:
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
   techniques:
-    new:
-      title: "テクニック投稿作成"
-    show:
-      title: "テクニック投稿詳細"
     index:
       title: "テクニック投稿一覧"
-    edit:
-      title: "テクニック投稿編集"
+    search:
+      title: "テクニック検索"
+    youtube:
+      new:
+        title: "テクニック登録"
+      show:
+        title: "テクニック詳細"
+      edit:
+        title: "テクニック編集"
+    twitter:
+      new:
+        title: "テクニック登録"
+      show:
+        title: "テクニック詳細"
+      edit:
+        title: "テクニック編集"

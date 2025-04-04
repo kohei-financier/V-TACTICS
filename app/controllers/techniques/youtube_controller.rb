@@ -18,6 +18,8 @@ class Techniques::YoutubeController < ApplicationController
 
   def show
     @technique = Technique.find(params[:id])
+    recommend_id = Technique.where(source_type: "youtube").pluck(:id).sample(5)
+    @recommend_techniques = Technique.where(id: recommend_id)
   end
 
   def edit

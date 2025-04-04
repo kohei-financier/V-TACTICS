@@ -1,4 +1,40 @@
 <% content_for(:title, t(".title")) %>
+
+<!-- swiper -->
+
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+  <% youtube_techniques = @swiper_techniques.where(source_type: "youtube") %>
+  <% youtube_techniques.each do |technique| %>
+    <div class="swiper-slide">
+    <!-- 背景 -->
+    <img src="https://img.youtube.com/vi/<%= technique.only_id_from_youtube_url %>/maxresdefault.jpg">
+    <!-- 背景 -->
+      <div class="title" data-swiper-parallax="-300">
+        <span class="text-base"><%= link_to technique.title, techniques_youtube_path(technique) %></span>
+      </div>
+      <div class="subtitle" data-swiper-parallax="-200">
+        <div class="px-6 pt-2 pb-2">
+          <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: technique.character}) do %>
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            <%= technique.character %>
+          </span>
+          <% end %>
+          <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: technique.map}) do %>
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            <%= technique.map %>
+          </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- swiper -->
+
 <div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">
   <% youtube_techniques = @techniques.where(source_type: "youtube") %>
   <% if youtube_techniques.present? %>
