@@ -21,6 +21,6 @@ module.exports = {
     // require('@tailwindcss/container-queries'),
   ],
   daisyui: {
-    themes: ['light','dark'],
+    themes: ['light'],
   },
 }

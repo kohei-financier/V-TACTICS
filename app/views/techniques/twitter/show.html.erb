@@ -3,31 +3,12 @@
 
   <div class="w-full md:w-2/3 md:pr-6">
     <blockquote class="twitter-tweet">
-      <a href="<%= @technique.x_to_twitter_change_url %>"></a>
+      <a data-width="300px" data-height="500px" href="<%= @technique.x_to_twitter_change_url %>"></a>
     </blockquote>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <div class="mt-4 text-xl font-bold"><%= @technique.title%></div>
+    <div class="mt-4 text-xl font-bold"><%= @technique.title %></div>
 
-
-      <% if user_signed_in? && current_user.own?(@technique) %>
-        <%= link_to edit_techniques_twitter_path(@technique), id: "button-edit-#{@technique.id}" do %>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
-          </svg>
-        <% end %>
-        <%= link_to techniques_twitter_path(@technique), id: "button-destroy-#{@technique.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }  do %>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-          </svg>
-        <% end %>
-      <% end %>
-
-    <div class="mt-2 flex space-x-3">
-      <a href="<%= @technique.source_url %>" class="btn px-4 py-2 bg-gray-500 text-white" target="_blank" rel="noopener noreferrer">Xへ</a>
-      <button class="px-4 py-2 bg-gray-300 text-black rounded-lg">Xでシェア</button>
-    </div>
-    <div class="px-6 pt-2 pb-2">
+    <div class="pt-2 pb-2">
       <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: @technique.character}) do %>
         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
           <%= @technique.character %>
@@ -39,6 +20,37 @@
         </span>
       <% end %>
     </div>
+
+
+    <div class="mt-2 flex space-x-3">
+
+      <a href="<%= @technique.source_url %>" class="btn bg-gray-500 text-white" target="_blank" rel="noopener noreferrer">Xへ</a>
+      <!-- <a class="btn">Xでシェア</a> -->
+
+      <% if user_signed_in? && current_user.own?(@technique) %>
+        <%= link_to "編集", edit_techniques_youtube_path(@technique), id: "button-edit-#{@technique.id}", class: "btn" %>
+        <%= link_to "削除", techniques_youtube_path(@technique), id: "button-destroy-#{@technique.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: "btn" %>
+      <% end %>
+
+    </div>
+
   </div>
 
+
+  <!-- おすすめツイート -->
+  <div class="w-full md:w-1/3 mt-6 md:mt-0">
+    <h2 class="text-lg font-semibold mb-4">おすすめポスト</h2>
+
+    <% @recommend_techniques.each do |technique| %>
+
+      <%= link_to technique.title, techniques_twitter_path(technique), class: "text-sm font-medium" %>
+
+      <blockquote class="twitter-tweet">
+        <a href="<%= technique.x_to_twitter_change_url %>"></a>
+      </blockquote>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <% end %>
+
+  </div>
 </div>

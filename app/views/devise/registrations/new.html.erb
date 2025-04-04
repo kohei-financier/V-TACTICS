@@ -7,7 +7,9 @@
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <span class="text-sm">
+        <%= render "devise/shared/error_messages", resource: resource %>
+      </span>
 
       <div class="field py-2 px-4">
         <%= f.label :name %><br />
