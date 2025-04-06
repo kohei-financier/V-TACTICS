@@ -5,6 +5,7 @@ class Technique < ApplicationRecord
 
   belongs_to :user
   enum source_type: { youtube: 1, twitter: 2 }
+  has_many :favorites, dependent: :destroy
 
   def embed_id_from_youtube_url
     # 埋め込み形式でIDを抜き出し（プレイヤー用）

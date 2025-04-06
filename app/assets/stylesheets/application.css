@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+.swiper {
+  width: 100%;
+  height: 100%;
+}

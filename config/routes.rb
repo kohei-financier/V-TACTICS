@@ -15,10 +15,12 @@ Rails.application.routes.draw do
   resources :techniques, only: %i[index] do
     collection do
       get "search"
+      get "favorites"
     end
   end
   namespace :techniques do
     resources :youtube, only: %i[new create show edit update destroy]
     resources :twitter, only: %i[new create show edit update destroy]
   end
+  resources :favorites, only: %i[create destroy]
 end
