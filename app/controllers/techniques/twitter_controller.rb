@@ -18,7 +18,7 @@ class Techniques::TwitterController < ApplicationController
 
   def show
     @technique = Technique.find(params[:id])
-    recommend_id = Technique.where(source_type: "twitter").pluck(:id).sample(2)
+    recommend_id = Technique.where(source_type: "twitter").where.not(id: @technique.id).pluck(:id).sample(2)
     @recommend_techniques = Technique.where(id: recommend_id)
   end
 

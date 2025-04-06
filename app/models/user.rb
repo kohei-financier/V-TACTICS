@@ -10,8 +10,22 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :techniques, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_techniques, through: :favorites, source: :technique
 
   def own?(technique)
     self.id == technique.user_id
+  end
+
+  def favorite(technique)
+    favorite_techniques << technique
+  end
+
+  def unfavorite(technique)
+    favorite_techniques.destroy(technique)
+  end
+
+  def favorite?(technique)
+    favorite_techniques.include?(technique)
   end
 end
