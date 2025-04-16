@@ -1,16 +1,25 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<% content_for(:title, t(".title")) %>
+<div class="flex min-h-auto flex-col justify-center md:m-12">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">パスワード変更</h2>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+  <div class="mt-10">
 
-<%= render "devise/shared/links" %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <div class="text-center"><%= render "devise/shared/error_messages", resource: resource %></div>
+
+      <div class="field py-2 px-4">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-md input-bordered w-full", placeholder: "メールアドレス" %>
+      </div>
+
+      <div class="actions text-center py-4 px-4">
+        <%= f.submit "パスワード変更申請する", class: "btn btn-wide" %>
+      </div>
+    <% end %>
+
+    <div class="text-center">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
