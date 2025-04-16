@@ -29,8 +29,12 @@ ja:
       failure: "%{kind}アカウントによる認証に失敗しました。理由: \"%{reason}\""
       success: "%{kind}アカウントによる認証に成功しました。"
     passwords:
+      new:
+        title: "パスワード変更"
+      edit:
+        title: "パスワード変更"
       no_token: "パスワード再設定メールのリンクからアクセスしないとこのページは利用できません。メールのリンクが正しいか確認してください。"
-      send_instructions: "数分以内に、パスワード再設定手順が記載されたメールが届きます。"
+      send_instructions: "数分以内に、パスワード再設定手順が記載されたメールが届きます。メールをご確認ください。"
       send_paranoid_instructions: "あなたのメールアドレスが登録済みの場合、パスワード再設定用のメールが数分以内に送信されます。"
       updated: "パスワードが正常に変更されました。"
       updated_not_active: "パスワードが正常に変更されました。"
@@ -70,5 +74,5 @@ ja:
       not_found: 'は見つかりませんでした。'
       not_locked: 'は凍結されていません。'
       not_saved:
-        one: "1件のエラーにより%{resource}を保存できませんでした："
-        other: "%{count}件のエラーにより%{resource}を保存できませんでした："
+        one: "【1件のエラーにより%{resource}を保存できませんでした】"
+        other: "【%{count}件のエラーにより%{resource}を保存できませんでした】"
