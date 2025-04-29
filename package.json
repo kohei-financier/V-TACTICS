@@ -6,7 +6,8 @@
     "esbuild": "^0.25.1"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build:css": "esbuild app/assets/stylesheets/application.css --outdir=app/assets/builds"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
