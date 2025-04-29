@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root "techniques#index"
-  devise_for :users, controllers: {}
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
   get "static_pages/top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
