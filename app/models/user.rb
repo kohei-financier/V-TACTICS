@@ -5,9 +5,11 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true
+  validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable,
+  :omniauthable, omniauth_providers: %i[google_oauth2]
 
   has_many :techniques, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -27,5 +29,13 @@ class User < ApplicationRecord
 
   def favorite?(technique)
     favorite_techniques.include?(technique)
+  end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+    end
   end
 end
