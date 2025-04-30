@@ -127,6 +127,9 @@ GEM
       net-http (>= 0.5.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    gretel (5.0.1)
+      actionview (>= 6.1)
+      railties (>= 6.1)
     hashie (5.0.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
@@ -432,6 +435,7 @@ DEPENDENCIES
   debug
   devise
   factory_bot_rails
+  gretel
   jbuilder
   jsbundling-rails
   letter_opener_web (~> 3.0)
@@ -450,7 +454,7 @@ DEPENDENCIES
   simplecov
   sprockets-rails
   stimulus-rails
-  tailwindcss-rails
+  tailwindcss-rails (~> 3.3.1)
   tailwindcss-ruby (= 3.4.17)
   turbo-rails
   tzinfo-data

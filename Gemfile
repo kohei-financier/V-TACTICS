@@ -63,7 +63,7 @@ group :test do
   gem "simplecov", require: false
 end
 
-gem "tailwindcss-rails"
+gem "tailwindcss-rails", "~> 3.3.1"
 gem "tailwindcss-ruby", "3.4.17"
 
 gem "devise"
@@ -74,3 +74,5 @@ gem "omniauth-google-oauth2"
 gem "rails-i18n", "~> 7.0.0"
 
 gem "ransack", "4.2.1"
+
+gem "gretel"

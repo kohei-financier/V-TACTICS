@@ -37,6 +37,12 @@
     <% if flash[:alert] %>
       <p class="alert"><%= flash[:alert] %></p>
     <% end %>
+    <!-- パンくずリスト -->
+    <% if breadcrumbs.present? %>
+      <nav class="p-5">
+        <%= breadcrumbs wrapper_tag: :ul, separator: '<span class="text-gray-400"> &rsaquo; </span>'.html_safe %>
+      </nav>
+    <% end %>
     <%= yield %>
     <%= render "shared/footer" %>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
