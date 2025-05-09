@@ -54,6 +54,13 @@
         ],
         "branches": {}
       },
+      "/myapp/app/controllers/folder_controller.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {}
+      },
       "/myapp/app/controllers/static_pages_controller.rb": {
         "lines": [
           0,
@@ -477,6 +484,13 @@
         ],
         "branches": {}
       },
+      "/myapp/app/helpers/folder_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {}
+      },
       "/myapp/app/helpers/posts_helper.rb": {
         "lines": [
           0,
@@ -540,6 +554,8 @@
       },
       "/myapp/app/models/folder.rb": {
         "lines": [
+          0,
+          0,
           0,
           0
         ],
@@ -617,6 +633,7 @@
           0,
           0,
           0,
+          0,
           null,
           0,
           0,
@@ -646,6 +663,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1746765803
+    "timestamp": 1746767033
   }
 }
