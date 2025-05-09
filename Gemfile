@@ -63,8 +63,8 @@ group :test do
   gem "simplecov", require: false
 end
 
-gem "tailwindcss-rails", "~> 3.3.2"
-gem "tailwindcss-ruby", "3.4.17"
+gem "tailwindcss-rails", "~> 4.2.3"
+gem "tailwindcss-ruby", "4.1.5"
 
 gem "devise"
 gem "omniauth"
