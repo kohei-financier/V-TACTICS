@@ -19,6 +19,7 @@
           1,
           1,
           1,
+          1,
           null,
           1,
           0,
@@ -69,6 +70,12 @@
           null
         ]
       },
+      "/myapp/app/helpers/folders_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/myapp/app/helpers/posts_helper.rb": {
         "lines": [
           1,
@@ -83,6 +90,14 @@
       },
       "/myapp/app/helpers/techniques_helper.rb": {
         "lines": [
+          1,
+          null
+        ]
+      },
+      "/myapp/app/models/folder.rb": {
+        "lines": [
+          1,
+          1,
           1,
           null
         ]
@@ -131,6 +146,36 @@
           0,
           null,
           0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/myapp/app/controllers/folders_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
           0,
           0,
           0,
@@ -273,6 +318,7 @@
           0,
           0,
           null,
+          0,
           0,
           0,
           0,
@@ -631,6 +677,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1746082100
+    "timestamp": 1746767922
   }
 }

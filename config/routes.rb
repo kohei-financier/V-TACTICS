@@ -27,4 +27,5 @@ Rails.application.routes.draw do
     resources :twitter, only: %i[new create show edit update destroy]
   end
   resources :favorites, only: %i[create destroy]
+  resources :folders, only: %i[new create show edit update destroy]
 end

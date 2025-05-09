@@ -2,6 +2,23 @@
 
 <div class="text-5xl font-bold mt-8 ml-10">マイページ</div>
 <div class="text-xl font-semibold underline mt-4 ml-10">このページではお気に入りしたテクニックが確認できます</div>
+
+<div class="text-lg font-semibold text-center mt-4 mb-4">お気に入りフォルダ</div>
+<% if @folders.present? %>
+  <% @folders.each do |folder| %>
+    <div class="btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder" viewBox="0 0 16 16">
+        <path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"/>
+      </svg>
+      <%= link_to folder.title, folder_path(folder) %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="text-red-500">何もフォルダが作成されていません</div>
+<% end %>
+
+<div class="btn"><%= link_to "新規フォルダ作成", new_folder_path %></div>
+
 <div class="text-4xl font-bold text-center mt-8">YouTube</div>
 <div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">
   <% youtube_techniques = @favorite_techniques.where(source_type: "youtube") %>

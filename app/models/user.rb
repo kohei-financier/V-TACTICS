@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :techniques, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_techniques, through: :favorites, source: :technique
+  has_many :folders, dependent: :destroy
 
   def own?(technique)
     self.id == technique.user_id
