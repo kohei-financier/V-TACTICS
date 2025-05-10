@@ -73,6 +73,6 @@ gem "omniauth-google-oauth2"
 
 gem "rails-i18n", "~> 7.0.0"
 
-gem "ransack", "4.2.1"
+gem "ransack", "4.3.0"
 
 gem "gretel"
