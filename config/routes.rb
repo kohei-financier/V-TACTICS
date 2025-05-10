@@ -17,10 +17,8 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   resources :techniques, only: %i[index] do
-    collection do
-      get "search"
-      get "favorites"
-    end
+    get "search", on: :collection
+    get "favorites", on: :member
   end
   namespace :techniques do
     resources :youtube, only: %i[new create show edit update destroy]

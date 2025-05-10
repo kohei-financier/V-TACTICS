@@ -7,7 +7,7 @@ class FoldersController < ApplicationController
     @folder = current_user.folders.build(folder_params)
 
     if @folder.save
-      redirect_to favorites_techniques_path, success: "フォルダの作成に成功しました"
+      redirect_to favorites_technique_path(current_user.id), success: "フォルダの作成に成功しました"
     else
       flash.now[:error] = "フォルダの作成に失敗しました"
       render "techniques/favorites", status: :unprocessable_entity

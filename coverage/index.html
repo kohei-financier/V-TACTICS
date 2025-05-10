@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-05-09T14:18:42+09:00">2025-05-09T14:18:42+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-05-10T15:26:39+09:00">2025-05-10T15:26:39+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,7 +22,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  12.77%
+  12.5%
 </span>
 
      </span>
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>282</b> relevant lines,
+    <b>288</b> relevant lines,
     <span class="green"><b>36</b> lines covered</span> and
-    <span class="red"><b>246</b> lines missed. </span>
+    <span class="red"><b>252</b> lines missed. </span>
     (<span class="red">
-  12.77%
+  12.5%
 </span>
 )
   </div>
@@ -160,10 +160,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#c9f907e32a86400438928fce472e5023653536e8" class="src_link" title="app/controllers/techniques_controller.rb">app/controllers/techniques_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">18</td>
-            <td class="cell--number">16</td>
+            <td class="cell--number">26</td>
+            <td class="cell--number">22</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">16</td>
+            <td class="cell--number">22</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -389,7 +389,7 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="red">
-  3.74%
+  3.63%
 </span>
 
      </span>
@@ -409,11 +409,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>187</b> relevant lines,
+    <b>193</b> relevant lines,
     <span class="green"><b>7</b> lines covered</span> and
-    <span class="red"><b>180</b> lines missed. </span>
+    <span class="red"><b>186</b> lines missed. </span>
     (<span class="red">
-  3.74%
+  3.63%
 </span>
 )
   </div>
@@ -505,10 +505,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#c9f907e32a86400438928fce472e5023653536e8" class="src_link" title="app/controllers/techniques_controller.rb">app/controllers/techniques_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">18</td>
-            <td class="cell--number">16</td>
+            <td class="cell--number">26</td>
+            <td class="cell--number">22</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">16</td>
+            <td class="cell--number">22</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -1698,7 +1698,7 @@
 
             
 
-            <code class="ruby">      redirect_to favorites_techniques_path, success: &quot;フォルダの作成に成功しました&quot;</code>
+            <code class="ruby">      redirect_to favorites_technique_path(current_user.id), success: &quot;フォルダの作成に成功しました&quot;</code>
           </li>
         </div>
       
@@ -3004,9 +3004,9 @@
     
 
     <div class="t-line-summary">
-      <b>16</b> relevant lines.
+      <b>22</b> relevant lines.
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>16</b> lines missed.</span>
+      <span class="red"><b>22</b> lines missed.</span>
     </div>
 
     
@@ -3177,7 +3177,37 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="17">
+          <li class="never" data-hits="" data-linenumber="17">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="18">
+            
+
+            
+
+            <code class="ruby">    @folder = Folder.new</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="19">
+            
+
+            
+
+            <code class="ruby">    @my_folders = current_user.folders.includes(:user)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="20">
             
 
             
@@ -3187,7 +3217,57 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="18">
+          <li class="never" data-hits="" data-linenumber="21">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="22">
+            
+
+            
+
+            <code class="ruby">  private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="23">
+            
+
+            
+
+            <code class="ruby">  def folder_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="24">
+            
+
+            
+
+            <code class="ruby">    params.require(:folder).permit(:title)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="25">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="26">
             
 
             
