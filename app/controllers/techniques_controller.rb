@@ -14,5 +14,13 @@ class TechniquesController < ApplicationController
   def favorites
     @favorite_techniques = current_user.favorite_techniques.includes(:user)
     @folders = current_user.folders.includes(:user)
+
+    @folder = Folder.new
+    @my_folders = current_user.folders.includes(:user)
+  end
+
+  private
+  def folder_params
+    params.require(:folder).permit(:title)
   end
 end
