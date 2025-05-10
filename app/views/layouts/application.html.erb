@@ -31,12 +31,16 @@
       <%= render "shared/before_login_header" %>
     <% end %>
     <%= render 'shared/flash_message' %>
+<%
+=begin%>
     <% if flash[:notice] %>
       <p class="notice"><%= flash[:notice] %></p>
     <% end %>
     <% if flash[:alert] %>
       <p class="alert"><%= flash[:alert] %></p>
     <% end %>
+<%
+=end%>
     <!-- パンくずリスト -->
     <% if breadcrumbs.present? %>
       <nav class="p-5">
