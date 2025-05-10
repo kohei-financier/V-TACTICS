@@ -32,6 +32,10 @@
         <%= link_to "削除", techniques_youtube_path(@technique), id: "button-destroy-#{@technique.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: "btn" %>
       <% end %>
 
+      <!-- マイフォルダに保存 ボタン -->
+      <div class="tooltip" data-tip="もうすぐ実装予定！">
+        <a href="#" class="btn btn-primary">マイフォルダに保存</a>
+      </div>
     </div>
 
   </div>
