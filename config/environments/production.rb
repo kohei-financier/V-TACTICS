@@ -77,12 +77,12 @@ Rails.application.configure do
   # Disable caching for Action Mailer templates even if Action Controller
   # caching is enabled.
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: "https://v-tactics.onrender.com" }
+  config.action_mailer.default_url_options = { host: "https://www.v-tactics.com" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              "smtp.gmail.com",
     port:                 587,
-    domain:               "gmail.com",
+    domain:               "v-tactics.com",
     user_name:            Rails.application.credentials.dig(:google, :email),
     password:             Rails.application.credentials.dig(:google, :app_password),
     authentication:       "plain",
