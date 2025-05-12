@@ -28,8 +28,8 @@
       <!-- <a class="btn">Xでシェア</a> -->
 
       <% if user_signed_in? && current_user.own?(@technique) %>
-        <%= link_to "編集", edit_techniques_youtube_path(@technique), id: "button-edit-#{@technique.id}", class: "btn" %>
-        <%= link_to "削除", techniques_youtube_path(@technique), id: "button-destroy-#{@technique.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: "btn" %>
+        <%= link_to "編集", edit_techniques_twitter_path(@technique), id: "button-edit-#{@technique.id}", class: "btn" %>
+        <%= link_to "削除", techniques_twitter_path(@technique), id: "button-destroy-#{@technique.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: "btn" %>
       <% end %>
 
       <!-- マイフォルダに保存 ボタン -->
