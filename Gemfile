@@ -76,3 +76,5 @@ gem "rails-i18n", "~> 7.0.0"
 gem "ransack", "4.2.1"
 
 gem "gretel"
+
+gem "meta-tags"
