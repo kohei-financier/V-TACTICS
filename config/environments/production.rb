@@ -113,4 +113,6 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  config.hosts << "v-tactics.com"      # 独自ドメイン
+  config.hosts << "www.v-tactics.com/"  # サブドメイン
 end
