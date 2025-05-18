@@ -25,7 +25,9 @@
     <div class="mt-2 flex space-x-3">
 
       <a href="<%= @technique.source_url %>" class="btn bg-gray-500 text-white" target="_blank" rel="noopener noreferrer">Xへ</a>
-      <!-- <a class="btn">Xでシェア</a> -->
+      <%= link_to "https://twitter.com/share?url=#{techniques_twitter_path(@technique)}&text=【2Seeds】%0a%0a#{@technique.title}", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+        <div class="btn"></div>
+      <% end %>
 
       <% if user_signed_in? && current_user.own?(@technique) %>
         <%= link_to "編集", edit_techniques_twitter_path(@technique), id: "button-edit-#{@technique.id}", class: "btn" %>

@@ -28,7 +28,9 @@
     <div class="mt-2 flex space-x-3">
 
       <a href="https://www.youtube.com/watch?v=<%= @technique.only_id_from_youtube_url %>" class="btn bg-red-500 text-white" target="_blank" rel="noopener noreferrer">YouTubeへ</a>
-      <!-- <a class="btn">Xでシェア</a> -->
+      <%= link_to "https://twitter.com/intent/tweet?url=#{request.url}%0a&text=#{CGI.escape("#{@technique.title}")}&hashtags=#{CGI.escape('VTACTICS')}", target: '_blank', rel: "noopener noreferrer" do %>
+        <div class="btn">Xでシェア</div>
+      <% end %>
 
       <% if user_signed_in? && current_user.own?(@technique) %>
         <%= link_to "編集", edit_techniques_youtube_path(@technique), id: "button-edit-#{@technique.id}", class: "btn" %>
