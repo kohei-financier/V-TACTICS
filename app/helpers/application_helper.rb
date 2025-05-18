@@ -13,7 +13,7 @@ module ApplicationHelper
       description: "各プラットフォームにあるVALORANTのテクニックを簡単に一括検索できるサービス",
       keywords: "ゲーム,valorant,eスポーツ",
       canonical: request.original_url,
-      separator: '|',
+      separator: "|",
       icon: [
         { href: image_url("favicon.ico") }
       ],
@@ -21,10 +21,10 @@ module ApplicationHelper
         site_name: :site,
         title: :title,
         description: :description,
-        type: 'website',
+        type: "website",
         url: request.original_url,
-        image: image_url('ogp.png'),
-        local: 'ja-JP',
+        image: image_url("ogp.png"),
+        local: "ja-JP"
       },
       twiiter: {
         card: "summary_large_image",
