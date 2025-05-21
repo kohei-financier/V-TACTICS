@@ -218,6 +218,8 @@
         "lines": [
           0,
           0,
+          null,
+          0,
           0
         ],
         "branches": {}
@@ -715,6 +717,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1747580283
+    "timestamp": 1747839990
   }
 }
