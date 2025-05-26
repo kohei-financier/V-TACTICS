@@ -78,3 +78,6 @@ gem "ransack", "4.2.1"
 gem "gretel"
 
 gem "meta-tags"
+
+# YoutubeAPIの実装
+gem 'google-apis-youtube_v3', '~> 0.56.0'
