@@ -33,4 +33,15 @@ module ApplicationHelper
       }
     }
   end
+
+  def extract_youtube_video_id(link)
+    # linkがない場合、nilを返す（データベースはNULLになる）
+    return nil if link.nil?
+
+    # URLからビデオIDを抜き出す
+    uri = URI(link)
+    query = URI.decode_www_form(uri.query)
+    query_hash = Hash[query]
+    query_hash["si"] # 共有ボタンから得られるIDはsiがキーになっているため
+  end
 end
