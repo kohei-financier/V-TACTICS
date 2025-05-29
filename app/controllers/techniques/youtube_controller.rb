@@ -1,5 +1,6 @@
 class Techniques::YoutubeController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
+
   def new
     @technique = Technique.new(source_type: "youtube")
   end
@@ -18,6 +19,9 @@ class Techniques::YoutubeController < ApplicationController
 
   def show
     @technique = Technique.find(params[:id])
+
+    youtube_service = YoutubeService.new
+    @movie_title = youtube_service.get_movie_title(@technique.only_id_from_youtube_url)
 
     recommend_id = Technique.where(source_type: "youtube").where.not(id: @technique.id).pluck(:id).sample(5)
     @recommend_techniques = Technique.where(id: recommend_id)

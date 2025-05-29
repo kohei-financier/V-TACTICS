@@ -9,8 +9,7 @@
               allowfullscreen>
       </iframe>
     </div>
-    <div class="mt-4 text-xl font-bold"><%= @technique.title%></div>
-    <!-- <div class="mt-4 text-md font-bold">チャンネルのタイトル</div> -->
+    <div class="mt-4 text-xl font-bold"><%= @movie_title %></div>
 
     <div class="pt-2 pb-2">
       <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: @technique.character}) do %>
