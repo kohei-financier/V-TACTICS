@@ -91,6 +91,17 @@
           null,
           null,
           null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
           null
         ]
       },
@@ -283,9 +294,6 @@
         "lines": [
           0,
           0,
-          0,
-          0,
-          0,
           null,
           0,
           0,
@@ -294,8 +302,15 @@
           0,
           0,
           0,
+          null,
           0,
           0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
           0,
           0,
           null,
@@ -715,8 +730,28 @@
           0
         ],
         "branches": {}
+      },
+      "/myapp/app/services/youtube_service.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
       }
     },
-    "timestamp": 1747839990
+    "timestamp": 1748506660
   }
 }
