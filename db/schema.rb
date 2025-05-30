@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_09_044322) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_30_131123) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_09_044322) do
     t.index ["technique_id"], name: "index_favorites_on_technique_id"
     t.index ["user_id", "technique_id"], name: "index_favorites_on_user_id_and_technique_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "folder_favorites", force: :cascade do |t|
+    t.bigint "folder_id", null: false
+    t.bigint "favorite_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favorite_id"], name: "index_folder_favorites_on_favorite_id"
+    t.index ["folder_id", "favorite_id"], name: "index_folder_favorites_on_folder_id_and_favorite_id", unique: true
+    t.index ["folder_id"], name: "index_folder_favorites_on_folder_id"
   end
 
   create_table "folders", force: :cascade do |t|
@@ -62,6 +72,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_09_044322) do
 
   add_foreign_key "favorites", "techniques"
   add_foreign_key "favorites", "users"
+  add_foreign_key "folder_favorites", "favorites"
+  add_foreign_key "folder_favorites", "folders"
   add_foreign_key "folders", "users"
   add_foreign_key "techniques", "users"
 end
