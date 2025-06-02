@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_09_044322) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_02_145739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
@@ -32,13 +38,20 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_09_044322) do
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
+  create_table "technique_categories", force: :cascade do |t|
+    t.bigint "technique_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_technique_categories_on_category_id"
+    t.index ["technique_id"], name: "index_technique_categories_on_technique_id"
+  end
+
   create_table "techniques", force: :cascade do |t|
     t.string "title", null: false
     t.integer "source_type", null: false
     t.string "source_url", null: false
     t.string "video_timestamp"
-    t.string "character"
-    t.string "map"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,5 +76,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_09_044322) do
   add_foreign_key "favorites", "techniques"
   add_foreign_key "favorites", "users"
   add_foreign_key "folders", "users"
+  add_foreign_key "technique_categories", "categories"
+  add_foreign_key "technique_categories", "techniques"
   add_foreign_key "techniques", "users"
 end

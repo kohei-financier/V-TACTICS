@@ -7,6 +7,9 @@ class Technique < ApplicationRecord
   enum source_type: { youtube: 1, twitter: 2 }
   has_many :favorites, dependent: :destroy
 
+  has_many :technique_categories, dependent: :destroy
+  has_many :categories, through: :technique_categories
+
   def embed_id_from_youtube_url
     # 埋め込み形式でIDを抜き出し（プレイヤー用）
     source_url.split("/").last if youtube?
@@ -40,7 +43,7 @@ class Technique < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "title", "character", "map" ]
+    [ "title" ]
   end
 
   def self.ransackable_associations(auth_object = nil)

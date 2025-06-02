@@ -50,6 +50,6 @@ class Techniques::YoutubeController < ApplicationController
   private
 
   def technique_params
-    params.require(:technique).permit(:title, :source_type, :source_url, :video_timestamp, :character, :map)
+    params.require(:technique).permit(:title, :source_type, :source_url, :video_timestamp)
   end
 end
