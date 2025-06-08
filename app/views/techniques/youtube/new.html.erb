@@ -19,50 +19,7 @@
         <%= f.text_field :video_timestamp, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "再生開始地点(HH:MM:SS or MM:SS or SSの形で入力)" %>
       </div>
       <div class="field py-2 px-4">
-        <%= f.select :character, [
-          ['ブリムストーン', 'ブリムストーン'],
-          ['フェニックス', 'フェニックス'],
-          ['セージ', 'セージ'],
-          ['ソーヴァ', 'ソーヴァ'],
-          ['ヴァイパー', 'ヴァイパー'],
-          ['サイファー', 'サイファー'],
-          ['ブリーチ', 'ブリーチ'],
-          ['オーメン', 'オーメン'],
-          ['ジェット', 'ジェット'],
-          ['レイズ', 'レイズ'],
-          ['レイナ', 'レイナ'],
-          ['キルジョイ', 'キルジョイ'],
-          ['スカイ', 'スカイ'],
-          ['ヨル', 'ヨル'],
-          ['アストラ', 'アストラ'],
-          ['KAY/O', 'KAY/O'],
-          ['チェンバー', 'チェンバー'],
-          ['ネオン', 'ネオン'],
-          ['フェイド', 'フェイド'],
-          ['ハーバー', 'ハーバー'],
-          ['ゲッコー', 'ゲッコー'],
-          ['デッドロック', 'デッドロック'],
-          ['アイソ', 'アイソ'],
-          ['クローヴ', 'クローヴ'],
-          ['ヴァイス', 'ヴァイス'],
-          ['テホ', 'テホ'],
-          ['ウェイレイ', 'ウェイレイ']
-        ], { include_blank: "エージェントを選択してください" }, class: "input input-md input-bordered w-full", placeholder: "キャラクター" %>
-      </div>
-      <div class="field py-2 px-4">
-        <%= f.select :map, [
-          ['スプリット', 'スプリット'],
-          ['バインド', 'バインド'],
-          ['ヘイブン', 'ヘイブン'],
-          ['アセント', 'アセント'],
-          ['アイスボックス', 'アイスボックス'],
-          ['ブリーズ', 'ブリーズ'],
-          ['フラクチャー', 'フラクチャー'],
-          ['パール', 'パール'],
-          ['ロータス', 'ロータス'],
-          ['サンセット', 'サンセット'],
-          ['アビス', 'アビス']
-        ], { include_blank: "マップを選択してください" }, class: "input input-md input-bordered w-full", placeholder: "マップ" %>
+        <%= f.text_field :category_names, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "カテゴリー名（コンマ（,）区切りで複数入力可能）" %>
       </div>
 
       <div class="actions text-center py-4 px-4">

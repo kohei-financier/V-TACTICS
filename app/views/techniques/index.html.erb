@@ -8,33 +8,22 @@
 
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
-  <% youtube_techniques = @swiper_techniques.where(source_type: "youtube") %>
-  <% youtube_techniques.each do |technique| %>
-    <div class="swiper-slide">
-    <!-- 背景 -->
-    <img src="https://img.youtube.com/vi/<%= technique.only_id_from_youtube_url %>/maxresdefault.jpg">
-    <!-- 背景 -->
-      <div class="title" data-swiper-parallax="-300">
-        <span class="text-base"><%= link_to technique.title, techniques_youtube_path(technique) %></span>
-      </div>
-      <div class="subtitle" data-swiper-parallax="-200">
-        <div class="px-6 pt-2 pb-2">
-          <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: technique.character}) do %>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            <%= technique.character %>
-          </span>
-          <% end %>
-          <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: technique.map}) do %>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            <%= technique.map %>
-          </span>
-          <% end %>
+    <% youtube_techniques = @swiper_techniques.where(source_type: "youtube") %>
+    <% youtube_techniques.each do |technique| %>
+      <div class="swiper-slide mr-[30px] mb-8">
+      <img src="https://img.youtube.com/vi/<%= technique.only_id_from_youtube_url %>/maxresdefault.jpg">
+        <div class="bottom-10 left-5 right-5 p-2 bg-opacity-60 z-10">
+          <span class="text-[20px] font-bold block text-left mb-2 break-all"><%= link_to technique.title, techniques_youtube_path(technique) %></span>
+          <%= link_to "詳細画面へ", techniques_youtube_path(technique), class: "inline-block px-4 py-2 bg-valorant-color text-white rounded-md text-sm transition duration-150 ease-out hover:ease-in" %>
         </div>
+        <% technique.categories.each do |category| %>
+          <span class="badge badge-outline badge-primary ml-2"><%= category.name %></span>
+        <% end %>
       </div>
+    <% end %>
     </div>
-  <% end %>
-  </div>
   <div class="swiper-pagination"></div>
+  </div>
 </div>
 
 <!-- swiper -->
@@ -42,12 +31,12 @@
 <!-- カテゴリー検索 -->
 <div class="text-center">
 <div class="text-4xl font-bold m-8">CATEGORIES（テクニックを検索してみよう！）</div>
-<%= link_to search_techniques_path(q: {title_or_character_or_map_cont: "ジェット"}) do %><span class="btn btn-accent btn-wide btn-lg">ジェット</span><% end %>
-<%= link_to search_techniques_path(q: {title_or_character_or_map_cont: "ヴァイパー"}) do %><span class="btn btn-accent btn-wide btn-lg">ヴァイパー</span><% end %>
-<%= link_to search_techniques_path(q: {title_or_character_or_map_cont: "サイファー"}) do %><span class="btn btn-accent btn-wide btn-lg">サイファー</span><% end %>
-<%= link_to search_techniques_path(q: {title_or_character_or_map_cont: "ロータス"}) do %><span class="btn btn-primary btn-wide btn-lg">ロータス</span><% end %>
-<%= link_to search_techniques_path(q: {title_or_character_or_map_cont: "バインド"}) do %><span class="btn btn-primary btn-wide btn-lg">バインド</span><% end %>
-<%= link_to search_techniques_path(q: {title_or_character_or_map_cont: "パール"}) do %><span class="btn btn-primary btn-wide btn-lg">パール</span><% end %>
+<%= link_to search_techniques_path(q: {title_cont: "ジェット"}) do %><span class="btn btn-accent btn-wide btn-lg">ジェット</span><% end %>
+<%= link_to search_techniques_path(q: {title_cont: "ヴァイパー"}) do %><span class="btn btn-accent btn-wide btn-lg">ヴァイパー</span><% end %>
+<%= link_to search_techniques_path(q: {title_cont: "サイファー"}) do %><span class="btn btn-accent btn-wide btn-lg">サイファー</span><% end %>
+<%= link_to search_techniques_path(q: {title_cont: "ロータス"}) do %><span class="btn btn-primary btn-wide btn-lg">ロータス</span><% end %>
+<%= link_to search_techniques_path(q: {title_cont: "バインド"}) do %><span class="btn btn-primary btn-wide btn-lg">バインド</span><% end %>
+<%= link_to search_techniques_path(q: {title_cont: "パール"}) do %><span class="btn btn-primary btn-wide btn-lg">パール</span><% end %>
 </div>
 <!-- カテゴリー検索 -->
 
@@ -67,16 +56,6 @@
           </div>
         </div>
         <div class="px-6 pt-2 pb-2">
-          <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: technique.character}) do %>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            <%= technique.character %>
-          </span>
-          <% end %>
-          <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: technique.map}) do %>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            <%= technique.map %>
-          </span>
-          <% end %>
           <% if user_signed_in? %>
             <% if current_user.favorite?(technique) %>
               <%= link_to favorite_path(current_user.favorites.find_by(technique_id: technique.id)), id: "unfavorite-button-for-technique-#{technique.id}", data: { turbo_method: :delete } do %>
@@ -132,16 +111,6 @@
           </div>
         </div>
         <div class="px-6 pt-2 pb-2">
-          <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: technique.character}) do %>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            <%= technique.character %>
-          </span>
-          <% end %>
-          <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: technique.map}) do %>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            <%= technique.map %>
-          </span>
-          <% end %>
           <% if user_signed_in? %>
             <% if current_user.favorite?(technique) %>
               <%= link_to favorite_path(current_user.favorites.find_by(technique_id: technique.id)), id: "unfavorite-button-for-technique-#{technique.id}", data: { turbo_method: :delete } do %>

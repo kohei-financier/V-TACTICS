@@ -9,19 +9,14 @@
               allowfullscreen>
       </iframe>
     </div>
-    <div class="mt-4 text-xl font-bold"><%= @movie_title %></div>
 
-    <div class="pt-2 pb-2">
-      <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: @technique.character}) do %>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          <%= @technique.character %>
-        </span>
-      <% end %>
-      <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: @technique.map}) do %>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          <%= @technique.map %>
-        </span>
-      <% end %>
+    <div class="mt-4 text-xl font-bold"><%= @technique.title %></div>
+    <div class="mt-2 text-md font-bold">元動画：<%= @movie_title %></div>
+
+    <div class="mt-4 mb-4">
+    <% @technique.categories.each do |category| %>
+      <span class="badge badge-outline badge-primary"><%= category.name %></span>
+    <% end %>
     </div>
 
     <div class="mt-2 flex space-x-3">

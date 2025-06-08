@@ -8,19 +8,6 @@
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <div class="mt-4 text-xl font-bold"><%= @technique.title %></div>
 
-    <div class="pt-2 pb-2">
-      <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: @technique.character}) do %>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          <%= @technique.character %>
-        </span>
-      <% end %>
-      <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: @technique.map}) do %>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          <%= @technique.map %>
-        </span>
-      <% end %>
-    </div>
-
 
     <div class="mt-2 flex space-x-3">
 
