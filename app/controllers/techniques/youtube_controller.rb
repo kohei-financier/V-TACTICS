@@ -38,7 +38,7 @@ class Techniques::YoutubeController < ApplicationController
 
   def update
     @technique = current_user.techniques.find(params[:id])
-    category_names = params[technique][:category_names]
+    category_names = params[:technique][:category_names]
 
     if @technique.update(technique_params)
       if category_names.present?
