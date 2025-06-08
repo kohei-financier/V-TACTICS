@@ -1,5 +1,6 @@
 class Techniques::TwitterController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
+
   def new
     @technique = Technique.new(source_type: "twitter")
   end
@@ -7,8 +8,13 @@ class Techniques::TwitterController < ApplicationController
   def create
     @technique = current_user.techniques.build(technique_params)
     @technique.source_type = "twitter"
+    category_names = params[:technique][:category_names]
 
     if @technique.save
+      if category_names.present?
+        categories = category_names.split(",").map(&:strip).uniq
+        create_or_update_technique_categories(@technique, categories)
+      end
       redirect_to techniques_twitter_path(@technique), success: t("defaults.flash_message.created", item: "Xの#{Technique.model_name.human}")
     else
       flash.now[:error] = t("defaults.flash_message.not_created", item: Technique.model_name.human)
@@ -28,7 +34,13 @@ class Techniques::TwitterController < ApplicationController
 
   def update
     @technique = current_user.techniques.find(params[:id])
+    category_names = params[technique][:category_names]
+
     if @technique.update(technique_params)
+      if category_names.present?
+        categories = params[:technique][:category_names].split(",").map(&:strip).uniq
+        create_or_update_technique_categories(@technique, categories)
+      end
       redirect_to techniques_twitter_path(@technique), success: t("defaults.flash_message.updated", item: Technique.model_name.human)
     else
       flash.now[:error] = t("defaults.flash_message.not_updated", item: Technique.model_name.human)
@@ -45,6 +57,18 @@ class Techniques::TwitterController < ApplicationController
   private
 
   def technique_params
-    params.require(:technique).permit(:title, :source_type, :source_url, :video_timestamp)
+    params.require(:technique).permit(:title, :source_type, :source_url)
+  end
+
+  def create_or_update_technique_categories(technique, categories)
+    technique.categories.destroy_all
+    begin
+      categories.each do |category|
+        category = Category.find_or_create_by(name: category)
+        technique.categories << category
+      rescue ActiveRecord::RecordInvalid
+        false
+      end
+    end
   end
 end

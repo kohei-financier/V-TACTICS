@@ -9,8 +9,15 @@
               allowfullscreen>
       </iframe>
     </div>
-    <div class="mt-4 text-xl font-bold"><%= @movie_title %></div>
 
+    <div class="mt-4 text-xl font-bold"><%= @technique.title %></div>
+    <div class="mt-2 text-md font-bold">元動画：<%= @movie_title %></div>
+
+    <div class="mt-4 mb-4">
+    <% @technique.categories.each do |category| %>
+      <span class="badge badge-outline badge-primary"><%= category.name %></span>
+    <% end %>
+    </div>
 
     <div class="mt-2 flex space-x-3">
 

@@ -8,19 +8,22 @@
 
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
-  <% youtube_techniques = @swiper_techniques.where(source_type: "youtube") %>
-  <% youtube_techniques.each do |technique| %>
-    <div class="swiper-slide">
-    <!-- 背景 -->
-    <img src="https://img.youtube.com/vi/<%= technique.only_id_from_youtube_url %>/maxresdefault.jpg">
-    <!-- 背景 -->
-      <div class="title" data-swiper-parallax="-300">
-        <span class="text-base"><%= link_to technique.title, techniques_youtube_path(technique) %></span>
+    <% youtube_techniques = @swiper_techniques.where(source_type: "youtube") %>
+    <% youtube_techniques.each do |technique| %>
+      <div class="swiper-slide mr-[30px] mb-8">
+      <img src="https://img.youtube.com/vi/<%= technique.only_id_from_youtube_url %>/maxresdefault.jpg">
+        <div class="bottom-10 left-5 right-5 p-2 bg-opacity-60 z-10">
+          <span class="text-[20px] font-bold block text-left mb-2 break-all"><%= link_to technique.title, techniques_youtube_path(technique) %></span>
+          <%= link_to "詳細画面へ", techniques_youtube_path(technique), class: "inline-block px-4 py-2 bg-valorant-color text-white rounded-md text-sm transition duration-150 ease-out hover:ease-in" %>
+        </div>
+        <% technique.categories.each do |category| %>
+          <span class="badge badge-outline badge-primary"><%= category.name %></span>
+        <% end %>
       </div>
+    <% end %>
     </div>
-  <% end %>
-  </div>
   <div class="swiper-pagination"></div>
+  </div>
 </div>
 
 <!-- swiper -->

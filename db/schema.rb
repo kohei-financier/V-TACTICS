@@ -30,6 +30,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_02_145739) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "folder_favorites", force: :cascade do |t|
+    t.bigint "folder_id", null: false
+    t.bigint "favorite_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favorite_id"], name: "index_folder_favorites_on_favorite_id"
+    t.index ["folder_id", "favorite_id"], name: "index_folder_favorites_on_folder_id_and_favorite_id", unique: true
+    t.index ["folder_id"], name: "index_folder_favorites_on_folder_id"
+  end
+
   create_table "folders", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id"
@@ -75,6 +85,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_02_145739) do
 
   add_foreign_key "favorites", "techniques"
   add_foreign_key "favorites", "users"
+  add_foreign_key "folder_favorites", "favorites"
+  add_foreign_key "folder_favorites", "folders"
   add_foreign_key "folders", "users"
   add_foreign_key "technique_categories", "categories"
   add_foreign_key "technique_categories", "techniques"

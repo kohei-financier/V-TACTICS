@@ -28,11 +28,6 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= display_meta_tags(default_meta_tags) %>
-    <style>
-    .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-      background-color: #c71585;
-    }
-    </style>
   </head>
 
   <body>
@@ -73,7 +68,7 @@
     },
     pagination: {
       el: ".swiper-pagination",
-      type: "progressbar",
+      clickable: true,
     },
     });
     </script>
