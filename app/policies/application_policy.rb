@@ -8,6 +8,10 @@ class ApplicationPolicy
     @record = record
   end
 
+  def dashboard?
+    user.present? && user.admin?
+  end
+
   def index?
     false
   end
