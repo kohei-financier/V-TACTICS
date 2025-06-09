@@ -12,6 +12,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.13",
+    "csso-cli": "^4.0.2",
     "postcss": "^8.5.3"
   }
 }
