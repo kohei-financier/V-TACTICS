@@ -4,8 +4,8 @@ class CssoCompressor
   def self.call(input)
     puts "[CssoCompressor] Compressing…"
 
-    # Copy the contents of the CSS file to a temp file 
-    temp_file = Tempfile.new([input[:name], ".css"])
+    # Copy the contents of the CSS file to a temp file
+    temp_file = Tempfile.new([ input[:name], ".css" ])
     temp_file.open
     temp_file.write(input[:data])
     temp_file.flush
@@ -13,7 +13,7 @@ class CssoCompressor
     # Run the compressor and capture the output
     css, err, status = Open3.capture3("npx", "csso", temp_file.path)
 
-    {data: css}
+    { data: css }
   end
 end
 
