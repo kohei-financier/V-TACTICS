@@ -41,6 +41,5 @@ RailsAdmin.config do |config|
   end
 
   config.model "User" do
-    
   end
 end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class TechniquePolicy < ApplicationPolicy
-
   def index?
     user.admin?
   end
