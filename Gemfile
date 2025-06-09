@@ -81,3 +81,10 @@ gem "meta-tags"
 
 # YoutubeAPIの実装
 gem "google-apis-youtube_v3", "~> 0.56.0"
+
+# admin権限を実装
+gem "pundit"
+
+# 管理者GUIの実装
+gem "rails_admin", "~> 3.0"
+gem "sassc-rails"
