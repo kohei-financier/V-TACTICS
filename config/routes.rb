@@ -30,4 +30,10 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: %i[create destroy]
   resources :folders, only: %i[new create show edit update destroy]
+  resources :categories, only: %i[index show] do
+    member do
+      post "follow"
+      delete "unfollow"
+    end
+  end
 end

@@ -1,0 +1,15 @@
+<h1><%= @category.name %></h1>
+
+<% if user_signed_in? %>
+  <% if current_user.following_categories.include?(@category) %>
+    <%= button_to "フォロー解除", unfollow_category_path(@category), method: :delete, data: { confirm: "本当にフォローを解除しますか？" } %>
+  <% else %>
+    <%= button_to "フォローする", follow_category_path(@category), method: :post %>
+  <% end %>
+<% else %>
+  <p>フォロー機能を利用するには<a href="<%= new_user_session_path %>">ログイン</a>してください。</p>
+<% end %>
+
+<% @techniques.each do |technique| %>
+  <%= technique.title %>
+<% end %>
