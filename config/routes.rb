@@ -32,8 +32,8 @@ Rails.application.routes.draw do
   resources :folders, only: %i[new create show edit update destroy]
   resources :categories, only: %i[index show] do
     member do
-      post "follow"
-      delete "unfollow"
+      post "follow", to: "follows#create"
+      delete "unfollow", to: "follows#destroy"
     end
   end
 end

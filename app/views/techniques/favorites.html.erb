@@ -43,6 +43,18 @@
 <%
 =end%>
 
+<h2>フォロー中のカテゴリー</h2>
+<% if @followed_categories.present? %>
+  <ul>
+    <% @followed_categories.each do |category| %>
+      <li><%= link_to category.name, category_path(category) %><%= button_to "フォロー解除", unfollow_category_path(category), method: :delete, data: { confirm: "本当にフォローを解除しますか？"} %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <div>まだフォローしているカテゴリーはありません</div>
+  <div><%= link_to "カテゴリー一覧を見る", categories_path %></div>
+<% end %>
+
 
 <div class="text-4xl font-bold text-center mt-8">YouTube</div>
 <div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">

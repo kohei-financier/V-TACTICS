@@ -17,6 +17,8 @@ class TechniquesController < ApplicationController
 
     @folder = Folder.new
     @my_folders = current_user.folders.includes(:user)
+
+    @followed_categories = current_user.following_categories.all
   end
 
   private
