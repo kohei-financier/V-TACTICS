@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>新しい投稿通知</title>
+  <style type="text/css">
+    /* ここにメール用のCSSスタイルを記述できます */
+    body { font-family: sans-serif; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; }
+    .footer { font-size: 12px; color: #999; text-align: center; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p><%= @user.name %>様</p>
+
+    <p>いつもご利用ありがとうございます。</p>
+
+    <p>あなたがフォローしている **<%= @category.name %>** カテゴリーに、新しいテクニックが投稿されました！</p>
+
+    <h3>投稿詳細</h3>
+    <ul>
+      <li>**タイトル**: <%= @technique.title %></li>
+      <li>**カテゴリー**: <%= @category.name %></li>
+      <li>**投稿者**: <%= @technique.user.name %></li>
+    </ul>
+
+    <p>今すぐ新しいテクニックをチェックしましょう！</p>
+    <p>
+      <%= link_to '投稿を見る', techniques_youtube_url(@technique) %>
+      <br>
+      <%= link_to 'カテゴリーを見る', category_url(@category) %>
+    </p>
+
+    <p>
+      このメールは、フォローしているカテゴリーに新しい投稿があった際にお送りしています。<br>
+      メール通知設定は、マイページで変更できます。
+    </p>
+
+    <div class="footer">
+      <p>&copy; <%= Time.current.year %> V-TACTICS</p>
+    </div>
+  </div>
+</body>
+</html>

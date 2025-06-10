@@ -1,0 +1,23 @@
+<%= @user.name %>様
+
+いつもご利用ありがとうございます。
+
+あなたがフォローしている <%= @category.name %> カテゴリーに、新しいテクニックが投稿されました！
+
+---
+投稿詳細:
+タイトル: <%= @technique.title %>
+カテゴリー: <%= @category.name %>
+投稿者: <%= @technique.user.name %>
+---
+
+今すぐ新しいテクニックをチェックしましょう！
+
+投稿を見る: <%= techniques_youtube_url(@technique) %>
+カテゴリーを見る: <%= category_url(@category) %>
+
+このメールは、フォローしているカテゴリーに新しい投稿があった際にお送りしています。
+メール通知設定は、マイページで変更できます。
+
+---
+V-TACTICS

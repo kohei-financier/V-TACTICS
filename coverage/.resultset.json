@@ -22,6 +22,7 @@
           1,
           1,
           1,
+          1,
           null,
           1,
           0,
@@ -149,6 +150,34 @@
           null
         ]
       },
+      "/myapp/app/mailers/notification_mailer.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null
+        ]
+      },
+      "/myapp/app/mailers/application_mailer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
       "/myapp/app/models/category.rb": {
         "lines": [
           1,
@@ -176,6 +205,14 @@
           1,
           1,
           null,
+          1,
+          null
+        ]
+      },
+      "/myapp/app/models/notification.rb": {
+        "lines": [
+          1,
+          1,
           1,
           null
         ]
@@ -423,12 +460,7 @@
           0,
           0,
           0,
-          0,
           null,
-          0,
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -450,15 +482,11 @@
           0,
           0,
           0,
-          null,
-          0,
-          0,
           0,
           null,
           0,
           0,
-          0,
-          0,
+          null,
           0,
           0,
           0,
@@ -475,18 +503,6 @@
           null,
           0,
           null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -803,15 +819,6 @@
         ],
         "branches": {}
       },
-      "/myapp/app/mailers/application_mailer.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
       "/myapp/app/models/favorite.rb": {
         "lines": [
           0,
@@ -831,7 +838,17 @@
           0,
           null,
           0,
+          null,
           0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
           0,
           null,
           0,
@@ -843,11 +860,6 @@
           0,
           null,
           0,
-          null,
-          0,
-          0,
-          null,
-          0,
           0,
           0,
           0,
@@ -873,6 +885,39 @@
           0,
           0,
           null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -1071,6 +1116,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1749542633
+    "timestamp": 1749551704
   }
 }

@@ -8,13 +8,8 @@ class Techniques::YoutubeController < ApplicationController
   def create
     @technique = current_user.techniques.build(technique_params)
     @technique.source_type = "youtube"
-    category_names = params[:technique][:category_names]
 
     if @technique.save
-      if category_names.present?
-        categories = category_names.split(",").map(&:strip).uniq
-        create_or_update_technique_categories(@technique, categories)
-      end
       redirect_to techniques_youtube_path(@technique), success: t("defaults.flash_message.created", item: "Youtubeの#{Technique.model_name.human}")
     else
       flash.now[:error] = t("defaults.flash_message.not_created", item: Technique.model_name.human)
@@ -34,17 +29,13 @@ class Techniques::YoutubeController < ApplicationController
 
   def edit
     @technique = current_user.techniques.find(params[:id])
+    @technique.category_names = @technique.categories.pluck(:name).join(",")
   end
 
   def update
     @technique = current_user.techniques.find(params[:id])
-    category_names = params[:technique][:category_names]
 
     if @technique.update(technique_params)
-      if category_names.present?
-        categories = params[:technique][:category_names].split(",").map(&:strip).uniq
-        create_or_update_technique_categories(@technique, categories)
-      end
       redirect_to techniques_youtube_path(@technique), success: t("defaults.flash_message.updated", item: Technique.model_name.human)
     else
       flash.now[:error] = t("defaults.flash_message.not_updated", item: Technique.model_name.human)
@@ -61,18 +52,6 @@ class Techniques::YoutubeController < ApplicationController
   private
 
   def technique_params
-    params.require(:technique).permit(:title, :source_type, :source_url, :video_timestamp)
-  end
-
-  def create_or_update_technique_categories(technique, categories)
-    technique.categories.destroy_all
-    begin
-      categories.each do |category|
-        category = Category.find_or_create_by(name: category)
-        technique.categories << category
-      rescue ActiveRecord::RecordInvalid
-        false
-      end
-    end
+    params.require(:technique).permit(:title, :source_type, :source_url, :video_timestamp, :category_names)
   end
 end

@@ -88,3 +88,5 @@ gem "pundit"
 # 管理者GUIの実装
 gem "rails_admin", "~> 3.0"
 gem "sassc-rails"
+
+gem "sidekiq", "~> 8.0"
