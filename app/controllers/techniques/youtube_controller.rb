@@ -29,7 +29,7 @@ class Techniques::YoutubeController < ApplicationController
 
   def edit
     @technique = current_user.techniques.find(params[:id])
-    @technique.category_names = @technique.categories.pluck(:name).join(',')
+    @technique.category_names = @technique.categories.pluck(:name).join(",")
   end
 
   def update
