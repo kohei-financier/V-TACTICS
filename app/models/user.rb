@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :following_categories, through: :follows, source: :category
   has_many :notifications, dependent: :destroy
 
+  # 編集と削除ボタン作成
   def own?(technique)
     self.id == technique.user_id
   end

@@ -48,4 +48,22 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  let(:owner_user) { create(:user) }
+  let(:technique) { create(:technique, user: owner_user) }
+
+  describe "techniqueの所有者かどうかチェック" do
+
+    context "テクニックの所有者の場合" do
+      it "own?がtrueか" do
+        expect(owner_user.own?(technique)).to be true
+      end
+    end
+
+    context "テクニックの所有者ではない（他のユーザーが持っている）場合" do
+      it "own?がfalseか" do
+        expect(user.own?(technique)).to be false
+      end
+    end
+  end
 end
