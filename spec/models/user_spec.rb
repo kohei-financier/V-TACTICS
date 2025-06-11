@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   let(:user) { create(:user) }
 
   describe "validationチェック" do
-
     context "名前が存在する場合" do
       it "ログインが有効か" do
         user = build(:user, name: "テストユーザー")
@@ -53,7 +51,6 @@ RSpec.describe User, type: :model do
   let(:technique) { create(:technique, user: owner_user) }
 
   describe "techniqueの所有者かどうかチェック" do
-
     context "テクニックの所有者の場合" do
       it "own?がtrueか" do
         expect(owner_user.own?(technique)).to be true
