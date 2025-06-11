@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  validates :name, presence: true, length: { maximum: 255 }
+  validates :name, presence: true, length: { maximum: 30 }
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :following_categories, through: :follows, source: :category
   has_many :notifications, dependent: :destroy
 
+  # 編集と削除ボタン作成
   def own?(technique)
     self.id == technique.user_id
   end
