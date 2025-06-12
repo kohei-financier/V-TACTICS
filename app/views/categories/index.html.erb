@@ -1,9 +1,8 @@
-<div>
-  <h1 class="font-bold text-4xl">Categories#index</h1>
-  <p>Find me in app/views/categories/index.html.erb</p>
+<div class="text-center">
+  <div class="text-6xl font-bold m-8">作成されているカテゴリー一覧</div>
+  <div>
+    <% @categories.each do |category| %>
+      <div class="btn btn-primary m-8 btn-wide sm:btn-sm md:btn-md lg:btn-lg"><%= link_to category.name, category_path(category) %></div>
+    <% end %>
+  </div>
 </div>
-<ul>
-  <% @categories.each do |c| %>
-    <li><%= link_to c.name, category_path(c) %></li>
-  <% end %>
-</ul>
