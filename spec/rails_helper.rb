@@ -80,5 +80,8 @@ RSpec.configure do |config|
     else
       driven_by :selenium_chrome_headless
     end
+  # Deviseのテストヘルパー
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
   end
 end
