@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "Users", type: :system do
-
   describe "ログイン" do
     let!(:user) { create(:user) }
 
