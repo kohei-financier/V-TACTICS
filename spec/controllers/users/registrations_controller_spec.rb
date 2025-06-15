@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "Devise新規登録", type: :controller do
-
   before do
     @request.env["devise.mapping"] = Devise.mappings[:user]
   end
