@@ -61,6 +61,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers", "~> 5.3", ">= 5.3.1"
   gem "simplecov", require: false
+  gem "shoulda-matchers"
 end
 
 gem "tailwindcss-rails", "~> 3.3.2"
