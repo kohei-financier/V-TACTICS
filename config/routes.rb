@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   resources :techniques, only: %i[index] do
+    get "autocomplete", on: :collection
     get "search", on: :collection
     get "favorites", on: :member
   end
