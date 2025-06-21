@@ -21,6 +21,14 @@ class TechniquesController < ApplicationController
     @followed_categories = current_user.following_categories.all
   end
 
+  def autocomplete
+    @techniques = Technique.where("title LIKE ?", "%#{params[:q]}%")
+
+    respond_to do |format|
+      format.html { render layout: false }
+    end
+  end
+
   private
   def folder_params
     params.require(:folder).permit(:title)
