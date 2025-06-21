@@ -4,12 +4,12 @@
 
 <div class="text-center">
 <%= search_form_for @q, html: { data: { turbo_frame: "search_result" } }, url: search_techniques_path, method: :get do |f| %>
-  <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_techniques_path %>" role="combobox">
-    <%= f.search_field :title_cont, class: "input input-md input-bordered w-1/3", placeholder: "タイトル・キャラクター・マップ名で検索", data: { autocomplete_target: 'input' } %>
+  <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_techniques_path %>" role="combobox" class="relative inline-block text-left w-1/3">
+    <%= f.search_field :title_cont, class: "input input-md input-bordered w-full", placeholder: "タイトル・キャラクター・マップ名で検索", data: { autocomplete_target: 'input' } %>
     <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
-    <ul class="list-group bg-white absolute w-full md:text-sm max-w-max" data-autocomplete-target="results"></ul>
-    <%= f.submit '検索', class: "btn" %>
+    <ul class="list-group bg-white absolute z-10 w-full border border-gray-200 rounded-md shadow-lg md:text-sm" data-autocomplete-target="results"></ul>
   </div>
+    <%= f.submit '検索', class: "btn" %>
 <% end %>
 </div>
 
