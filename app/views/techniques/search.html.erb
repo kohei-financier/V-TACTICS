@@ -32,6 +32,7 @@
               開始地点: <%= technique.video_timestamp %>
             </div>
           </div>
+          <%= render "favorite_button", technique: technique %>
           <div class="bottom-0">
           <iframe class="w-full aspect-video"
                   src="https://www.youtube.com/embed/<%= technique.embed_id_from_youtube_url %>&amp;start=<%= technique.calculate_video_timestamp %>"
@@ -70,6 +71,7 @@
               <span><%= link_to technique.title, techniques_twitter_path(technique), data: { turbo: false } %></span>
             </div>
           </div>
+          <%= render "favorite_button", technique: technique %>
           <div class="bottom-0">
           <blockquote class="twitter-tweet">
             <a href="<%= technique.x_to_twitter_change_url || technique.source_url %>"></a>
