@@ -1,7 +1,9 @@
 <% content_for(:title, t(".title")) %>
 
-<div class="text-5xl font-bold mt-8 ml-10">マイページ</div>
-<div class="text-xl font-semibold underline mt-4 ml-10">このページではお気に入りしたテクニックが確認できます</div>
+<div class="text-center">
+  <div class="text-5xl font-bold mt-8 ml-10">マイページ</div>
+  <div class="text-xl font-semibold underline mt-4 ml-10">このページではお気に入りしたテクニックが確認できます</div>
+</div>
 
 <%
 =begin%>
@@ -50,9 +52,9 @@
   <div>
     <% if @followed_categories.present? %>
       <% @followed_categories.each do |category| %>
-        <div class="flex justify-center space-x-4 m-2">
+        <div class="flex justify-center items-center space-x-4 m-2">
           <%= link_to category.name, category_path(category), class: "text-blue-600 hover:underline" %>
-          <%= button_to "フォロー解除", unfollow_category_path(category), method: :delete, data: { confirm: "本当にフォローを解除しますか?"}, class: "hidden h-8 w-32 rounded-full bg-red-500 font-extrabold text-white hover:bg-orange-600 md:block" %>
+          <%= button_to "フォロー解除", unfollow_category_path(category), method: :delete, data: { confirm: "本当にフォローを解除しますか?"}, class: "hidden h-8 w-32 rounded-full bg-red-500 font-extrabold text-white hover:bg-red-600 md:block" %>
         </div>
       <% end %>
     <% else %>
@@ -61,6 +63,8 @@
     <% end %>
   </div>
 </div>
+
+<%# お気に入りした投稿の一覧表示 %>
 
 <div class="text-4xl font-bold text-center mt-8">YouTube</div>
 <div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">
