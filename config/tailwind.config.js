@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Noto Sans JP', sans-serif],
+        sans: ['Noto Sans JP', 'sans-serif'],
       },
       colors: {
         "valorant-color": "#FF4655",
