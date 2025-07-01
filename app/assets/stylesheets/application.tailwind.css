@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&family=Unbounded:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -36,4 +37,59 @@
 .swiper-pagination-bullet:hover {
   background: #FF4655;
   opacity: 0.9;
+}
+
+.scroll_down{
+  position:absolute;
+  bottom: 0px;
+  left: 50%;
+}
+
+.scroll_down a{
+  position: absolute;
+  left: 10px;
+  bottom: 87px;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: .2em;
+  writing-mode: vertical-lr;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.scroll_down:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -4px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background:#fff;
+  animation:
+    circlemove 1.6s ease-in-out infinite,
+    cirlemovehide 1.6s ease-out infinite;
+}
+
+@keyframes circlemove{
+  0%{bottom:160px;}
+  100%{bottom:0px;}
+}
+
+@keyframes cirlemovehide{
+  0%{opacity:0}
+  50%{opacity:1;}
+  80%{opacity:0.9;}
+  100%{opacity:0;}
+}
+
+.scroll_down:after{
+  content:"";
+  position: absolute;
+  bottom:0;
+  left:0;
+  width:2px;
+  height: 160px;
+  background:#fff;
 }
