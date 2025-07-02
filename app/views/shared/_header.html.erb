@@ -1,5 +1,5 @@
 <header>
-  <div class="navbar bg-base-100">
+  <div class="navbar bg-black text-white ibm-plex-sans-jp-bold">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -179,7 +179,7 @@
       </svg>
     </label>
 
-    <div class="m-6">こんにちは、<%= current_user.name %>さん！</div>
+    <div class="m-3">こんにちは、<%= current_user.name %>さん！</div>
 
     <div>
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn" %>
