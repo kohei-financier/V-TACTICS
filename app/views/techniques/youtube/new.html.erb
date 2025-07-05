@@ -1,23 +1,54 @@
 <% content_for(:title, t(".title")) %>
-<div class="flex min-h-full flex-col justify-center md:m-12">
+
+<%# 生成した際に指示が書いてあったコントローラーの読み込みをココに追記 %>
+<div class="flex min-h-full flex-col justify-center md:m-12" data-controller="youtube-preview">
+
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">YouTubeテクニック登録</h2>
   </div>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
 
+    <%# プレビュー画面 %>
+    <div data-youtube-preview-target="preview" class="mb-4 aspect-video w-full rounded-lg bg-gray-200 flex items-center justify-center">
+      <span class="text-gray-500">投稿前にこちらで動画が確認できます</span>
+    </div>
+
     <%= form_with model: @technique, url: techniques_youtube_index_path do |f| %>
+
       <%= render 'shared/error_message', object: f.object %>
         <%= f.hidden_field :source_type %>
+
+      <div class="field py-2 px-4">
+        <%= f.text_field :source_url,
+              autofocus: true,
+              autocomplete: "title",
+              class: "input input-md input-bordered w-full",
+              placeholder: "#{@technique.source_type.humanize}のURL",
+              data: {
+                youtube_preview_target: "sourceUrl",
+                action: "input->youtube-preview#update", # inputがあったら、updateメソッドに投げる
+              }
+        %>
+      </div>
+
+      <div class="field py-2 px-4">
+        <%= f.text_field :video_timestamp,
+              autofocus: true,
+              autocomplete: "title",
+              class: "input input-md input-bordered w-full",
+              placeholder: "再生開始地点(HH:MM:SS or MM:SS or SSの形で入力)",
+              data: {
+                youtube_preview_target: "timestamp",
+                action: "input->youtube-preview#update",
+              }
+        %>
+      </div>
+
       <div class="field py-2 px-4">
         <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "タイトル" %>
       </div>
-      <div class="field py-2 px-4">
-        <%= f.text_field :source_url, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "#{@technique.source_type.humanize}のURL" %>
-      </div>
-      <div class="field py-2 px-4">
-        <%= f.text_field :video_timestamp, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "再生開始地点(HH:MM:SS or MM:SS or SSの形で入力)" %>
-      </div>
+
       <div class="field py-2 px-4">
         <%= f.text_field :category_names, autofocus: true, autocomplete: "title", class: "input input-md input-bordered w-full", placeholder: "カテゴリー名（コンマ（,）区切りで複数入力可能）" %>
       </div>
