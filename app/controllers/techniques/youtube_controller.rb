@@ -20,9 +20,11 @@ class Techniques::YoutubeController < ApplicationController
   def show
     @technique = Technique.find(params[:id])
 
+    # youtubeAPIを引っ張ってくる
     youtube_service = YoutubeService.new
     @movie_title = youtube_service.get_movie_title(@technique.only_id_from_youtube_url)
 
+    # おすすめ動画のためにIDをランダムで引っ張ってくる
     recommend_id = Technique.where(source_type: "youtube").where.not(id: @technique.id).pluck(:id).sample(5)
     @recommend_techniques = Technique.where(id: recommend_id)
   end
