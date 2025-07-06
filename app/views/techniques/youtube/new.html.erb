@@ -74,7 +74,13 @@
 
 
   <%# ======右側：ブラウザのモックアップ====== %>
-  <div class="w-full lg:w-1/2 xl:w-2/3 mt-10 lg:mt-0">
+  <div class="w-full lg:w-1/2 xl:w-2/3 mt-10 ml-4 lg:mt-0 lg:ml-4 lg:mr-4">
+
+    <div class="items-center m-4">
+      <h2 class="text-center text-xl font-bold tracking-tight text-gray-900">プレビュー画面</h2>
+      <h2 class="text-center text-lg tracking-tight text-gray-900">（こちらで実際に作成されるページを事前確認できます）</h2>
+    </div>
+
     <div class="mockup-browser border-base-300 border">
       <div class="mockup-browser-toolbar">
         <div class="input border-base-300 border">https://v-tactics.com</div>
@@ -89,7 +95,7 @@
         </div>
 
         <div data-youtube-preview-target="previewTitle" class="mt-4 text-xl font-bold line-clamp-1">タイトル</div>
-        <div data-youtube-preview-target="previewOriginalTitle" class="mt-2 text-md line-clamp-1">元動画：（ここに動画タイトルが表示されます）</div>
+        <div data-youtube-preview-target="previewOriginalTitle" class="mt-2 text-md line-clamp-1">元動画：<%= @movie_title %></div>
 
         <div data-youtube-preview-target="previewCategories" class="mt-4 mb-4 flex flex-wrap gap-2">
         </div>
@@ -109,12 +115,8 @@
           <div class="btn">編集</div>
           <div class="btn">削除</div>
 
-          <!-- マイフォルダに保存 ボタン -->
-          <div class="tooltip" data-tip="もうすぐ実装予定！">
-            <a href="#" class="btn btn-primary">マイフォルダに保存</a>
-          </div>
+          <div class="btn btn-primary">マイフォルダに保存</div>
 
-          <%# お気に入りボタン %>
           <div class="btn btn-soft btn-warning">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
               <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>

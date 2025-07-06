@@ -37,4 +37,5 @@ Rails.application.routes.draw do
       delete "unfollow", to: "follows#destroy"
     end
   end
+  get "/youtube/title", to: "youtube_api#title"
 end

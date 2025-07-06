@@ -75,7 +75,7 @@ export default class extends Controller {
     if (videoId) {
       // デフォルトの表示（まだフォームにURLが入っていない時）
       this.previewOriginalTitleTarget.textContent = "元動画：タイトルを取得中・・・。"
-      this.#fetchVideoTitle(url)
+      this.#fetchVideoTitle(videoId)
     } else {
       this.previewOriginalTitleTarget.textContent = "元動画：（ここに動画タイトルが表示されます）"
     }
@@ -96,14 +96,19 @@ export default class extends Controller {
     }
   }
 
-  async #fetchVideoTitle(youtubeUrl) {
+  async #fetchVideoTitle(videoId) {
     try {
-      const response = await fetch(`http://googleusercontent.com/youtube.com/oembed?url=${encodeURIComponent(youtubeUrl)}&format=json`)
+      const response = await fetch(`/youtube/title?video_id=${videoId}`)
       if (!response.ok) {
         throw new Error('YouTube APIからの応答がありませんでした。')
       }
       const data = await response.json()
-      this.previewOriginalTitleTarget.textContent = `元動画：${data.title}`
+
+      if (data.title) {
+        this.previewOriginalTitleTarget.textContent = `元動画：${data.title}`
+      } else {
+        throw new Error('JSONにタイトルが含まれていません。')
+      }
     } catch (error) {
       console.error("動画タイトルの取得に失敗しました:", error)
       this.previewOriginalTitleTarget.textContent = "元動画：タイトルの取得に失敗しました"
