@@ -4,17 +4,30 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   // HTMLの要素（ターゲット）をココで指定しておく
-  static targets = [ "sourceUrl", "timestamp", "preview"]
+  static targets = [ "sourceUrl", "timestamp","titleInput", "categoryInput", //input系
+                    "preview", "previewTitle", "previewOriginalTitle", "previewCategories" //モックアップに書く
+                    ]
+
+  connect() {
+    this.update()
+  }
 
   update() {
+    this.#updateVideo()
+    this.#updateSelfTitle()
+    this.#updateOriginalTitle()
+    this.#updateCategories()
+  }
+
+  #updateVideo() {
     const url = this.sourceUrlTarget.value;
     const timestamp = this.timestampTarget.value;
 
     // urlから抜き出したIDを代入
-    const videoId = this.youtubeVideoId(url);
+    const videoId = this.#youtubeVideoId(url);
 
     // 秒数に変えた時間を代入
-    const startSeconds = this.timestampToSeconds(timestamp);
+    const startSeconds = this.#timestampToSeconds(timestamp);
 
     if (videoId) {
       const iframe = document.createElement('iframe');
@@ -22,7 +35,7 @@ export default class extends Controller {
       iframe.setAttribute('frameborder', '0');
       iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
       iframe.setAttribute('allowfullscreen', '');
-      iframe.className = 'w-full h-full rounded-lg';
+      iframe.className = 'w-full h-full';
 
       this.previewTarget.innerHTML = '';
       this.previewTarget.appendChild(iframe);
@@ -33,7 +46,7 @@ export default class extends Controller {
   }
 
   // urlの抜き出しメソッド
-  youtubeVideoId(url) {
+  #youtubeVideoId(url) {
     // この正規表現はサイトを参考。https://follmy.com/ruby-youtube-embeded/
     const regex = /(?:https:\/\/www\.youtube\.com(?:\/embed\/|\/watch\?v=)|https:\/\/youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     const match = url.match(regex);
@@ -41,7 +54,7 @@ export default class extends Controller {
   }
 
   // 時間を秒数に変えるメソッド
-  timestampToSeconds(timestamp) {
+  #timestampToSeconds(timestamp) {
     if (!timestamp) return 0;
     const parts = timestamp.split(':').map(Number).reverse();
     let seconds = 0;
@@ -50,4 +63,51 @@ export default class extends Controller {
     if (parts[2]) seconds += parts[2] * 3600;
     return isNaN(seconds) ? 0 : seconds;
   }
+
+  #updateSelfTitle() {
+    this.previewTitleTarget.textContent = this.titleInputTarget.value || "フォームに入力すると、ここに自分でタイトルを付けることができます"
+  }
+
+  #updateOriginalTitle() {
+    const url = this.sourceUrlTarget.value
+    const videoId = this.#youtubeVideoId(url)
+
+    if (videoId) {
+      // デフォルトの表示（まだフォームにURLが入っていない時）
+      this.previewOriginalTitleTarget.textContent = "元動画：タイトルを取得中・・・。"
+      this.#fetchVideoTitle(url)
+    } else {
+      this.previewOriginalTitleTarget.textContent = "元動画：（ここに動画タイトルが表示されます）"
+    }
+  }
+
+  #updateCategories() {
+    this.previewCategoriesTarget.innerHTML = ''
+    const categoryNames = this.categoryInputTarget.value
+
+    if (categoryNames) {
+      const categories = categoryNames.split(',').map(name => name.trim()).filter(name => name)
+      categories.forEach(name => {
+        const badge = document.createElement('span')
+        badge.className = 'badge badge-outline badge-primary'
+        badge.textContent = name
+        this.previewCategoriesTarget.appendChild(badge)
+      })
+    }
+  }
+
+  async #fetchVideoTitle(youtubeUrl) {
+    try {
+      const response = await fetch(`http://googleusercontent.com/youtube.com/oembed?url=${encodeURIComponent(youtubeUrl)}&format=json`)
+      if (!response.ok) {
+        throw new Error('YouTube APIからの応答がありませんでした。')
+      }
+      const data = await response.json()
+      this.previewOriginalTitleTarget.textContent = `元動画：${data.title}`
+    } catch (error) {
+      console.error("動画タイトルの取得に失敗しました:", error)
+      this.previewOriginalTitleTarget.textContent = "元動画：タイトルの取得に失敗しました"
+    }
+  }
+
 }
