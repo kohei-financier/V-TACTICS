@@ -65,7 +65,7 @@ export default class extends Controller {
   }
 
   #updateSelfTitle() {
-    this.previewTitleTarget.textContent = this.titleInputTarget.value || "フォームに入力すると、ここに自分でタイトルを付けることができます"
+    this.previewTitleTarget.textContent = this.titleInputTarget.value || "左の「オリジナルタイトル」のフォームに入力すると、こちらに好きなタイトルを付けることができます！"
   }
 
   #updateOriginalTitle() {
@@ -77,7 +77,7 @@ export default class extends Controller {
       this.previewOriginalTitleTarget.textContent = "元動画：タイトルを取得中・・・。"
       this.#fetchVideoTitle(videoId)
     } else {
-      this.previewOriginalTitleTarget.textContent = "元動画：（ここに動画タイトルが表示されます）"
+      this.previewOriginalTitleTarget.textContent = "元動画：（ここに自動で動画タイトルが表示されます）"
     }
   }
 
