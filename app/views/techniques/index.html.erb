@@ -21,7 +21,7 @@
           <% if technique.categories.any? %><%# if文で囲まないとgap-2が発生してしまう！ %>
             <div>
               <% technique.categories.each do |category| %>
-                <span class="badge badge-outline badge-primary"><%= category.name %></span>
+                <span class="badge badge-info"><%= category.name %></span>
               <% end %>
             </div>
           <% end %>
@@ -88,7 +88,7 @@
 
                     <div class="mt-2 mb-2">
                       <% technique.categories.each do |category| %>
-                        <span class="badge badge-outline badge-primary"><%= category.name %></span>
+                        <span class="badge badge-info"><%= category.name %></span>
                       <% end %>
                     </div>
 
