@@ -156,9 +156,9 @@
   <div class="navbar-end">
 
   <%# DaisyUI theme controller %>
-    <label class="swap swap-rotate">
+    <label class="swap swap-rotate" data-controller="theme">
       <%# this hidden checkbox controls the state %>
-      <input type="checkbox" class="theme-controller" value="black" />
+      <input type="checkbox" class="theme-controller" value="black" data-theme-target="toggle" data-action="change->theme#switch" />
 
       <%# sun icon %>
       <svg
