@@ -11,17 +11,32 @@
     <% youtube_techniques = @swiper_techniques.where(source_type: "youtube") %>
     <% youtube_techniques.each do |technique| %>
       <div class="swiper-slide mr-[30px] mb-8">
-      <img src="https://img.youtube.com/vi/<%= technique.only_id_from_youtube_url %>/maxresdefault.jpg">
-        <div class="bottom-10 left-5 right-5 p-2 bg-opacity-60 z-10">
-          <span class="text-[20px] font-bold block text-left mb-2 break-all"><%= link_to technique.title, techniques_youtube_path(technique) %></span>
-          <%= link_to "詳細画面へ", techniques_youtube_path(technique), class: "inline-block px-4 py-2 bg-valorant-color text-white rounded-md text-sm transition duration-150 ease-out hover:ease-in" %>
+      <%= link_to techniques_youtube_path(technique) do %>
+        <img src="https://img.youtube.com/vi/<%= technique.only_id_from_youtube_url %>/maxresdefault.jpg">
+
+        <div class="flex flex-col gap-2 p-2">
+
+          <div class="text-[20px] font-bold text-left line-clamp-1"><%= technique.title %></div>
+
+          <% if technique.categories.any? %><%# if文で囲まないとgap-2が発生してしまう！ %>
+            <div>
+              <% technique.categories.each do |category| %>
+                <span class="badge badge-info"><%= category.name %></span>
+              <% end %>
+            </div>
+          <% end %>
+
         </div>
-        <% technique.categories.each do |category| %>
-          <span class="badge badge-outline badge-primary ml-2"><%= category.name %></span>
-        <% end %>
+
+      <% end %>
+
+      <div class="flex justify-start m-2">
+        <%= link_to "詳細画面へ", techniques_youtube_path(technique), class: "btn btn-primary" %>
+      </div>
+
       </div>
     <% end %>
-    </div>
+  </div>
   <div class="swiper-pagination"></div>
   </div>
 </div>
@@ -40,48 +55,93 @@
 </div>
 <!-- カテゴリー検索 -->
 
-
-<div class="text-4xl font-bold text-center mt-8">NEW MOVIE</div>
-<div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">
-  <!--<% youtube_techniques = @techniques.where(source_type: "youtube") %>-->
-  <% if @youtube_techniques.present? %>
-    <% @youtube_techniques.each do |technique| %>
-      <div class="w-1/3 rounded overflow-hidden shadow-xl flex flex-col">
-        <div class="px-6 py-4 flex-grow">
-          <div class="font-bold text-xl mb-2">
-            <span><%= link_to technique.title, techniques_youtube_path(technique) %></span>
-          </div>
-          <div class="text-base">
-            開始地点: <%= technique.video_timestamp %>
-          </div>
-        </div>
-        <%= render "favorite_button", technique: technique %>
-        <div class="bottom-0">
-        <iframe class="w-full aspect-video"
-                src="https://www.youtube.com/embed/<%= technique.embed_id_from_youtube_url %>&amp;start=<%= technique.calculate_video_timestamp %>"
-                frameborder="0"
-                allowfullscreen>
-        </iframe>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <div role="alert" class="alert alert-warning">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 shrink-0 stroke-current"
-          fill="none"
-          viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-      <span>YouTubeのテクニックは投稿されていません</span>
+<section>
+  <div class="container py-24 mx-auto">
+    <div class="border-b border-gray-600 pb-4">
+      <h3 class="text-xl font-semibold leading-6">
+        Latest Movies
+      </h3>
     </div>
-  <% end %>
-</div>
+
+    <div class="relative mx-auto max-w-7xl">
+      <div class="mx-auto mt-12 grid max-w-lg gap-12 lg:max-w-none lg:grid-cols-3">
+        <% if @youtube_techniques.present? %>
+          <% @youtube_techniques.each do |technique| %>
+            <div class="mb-12 flex flex-col overflow-hidden">
+              <%= link_to techniques_youtube_path(technique) do %>
+
+                <%# youtube %>
+                <div class="shrink-0">
+                  <iframe class="w-full aspect-video"
+                          src="https://www.youtube.com/embed/<%= technique.embed_id_from_youtube_url %>&start=<%= technique.calculate_video_timestamp %>"
+                          frameborder="0"
+                          allowfullscreen>
+                  </iframe>
+                </div>
+
+                <%# テキスト情報 %>
+                <div class="flex flex-1 flex-col justify-between pt-6 pl-6 pr-6">
+                  <div class="flex-1">
+                    <div class="flex text-sm">
+                      <span>開始地点: <%= technique.video_timestamp %></span>
+                    </div>
+
+                    <div class="mt-2 mb-2">
+                      <% technique.categories.each do |category| %>
+                        <span class="badge badge-info"><%= category.name %></span>
+                      <% end %>
+                    </div>
+
+                    <div class="mt-3 block">
+                      <h3 class="text-2xl font-semibold leading-none tracking-tighter mb-4">
+                        <%= technique.title %>
+                      </h3>
+                      <p class="text-lg font-normal mb-4">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+                        facilis asperiores porro quaerat doloribus, eveniet dolore.
+                        Adipisci tempora aut inventore optio animi., tempore
+                        temporibus quo laudantium.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="flex justify-center items-center gap-2 mt-2">
+                  <%= link_to "詳細画面へ", techniques_youtube_path(technique), class: "btn btn-primary" %>
+                  <%= render "favorite_button", technique: technique %>
+                </div>
+
+              <% end %>
+
+            </div>
+          <% end %>
+
+          <% else %>
+
+            <div role="alert" class="alert alert-warning">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 shrink-0 stroke-current"
+                  fill="none"
+                  viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              <span>YouTubeのテクニックは投稿されていません</span>
+            </div>
+
+          <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
 <div class="text-4xl font-bold text-center mt-8">NEW POST</div>
 <div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">

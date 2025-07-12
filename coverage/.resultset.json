@@ -673,8 +673,10 @@
           0,
           0,
           null,
+          null,
           0,
           0,
+          null,
           null,
           0,
           0,
@@ -908,6 +910,29 @@
         ],
         "branches": {}
       },
+      "/myapp/app/controllers/youtube_api_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
       "/myapp/app/jobs/application_job.rb": {
         "lines": [
           0,
@@ -1122,6 +1147,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1750517210
+    "timestamp": 1752298226
   }
 }

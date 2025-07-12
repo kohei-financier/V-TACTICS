@@ -7,5 +7,8 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import ThemeController from "./theme_controller"
+application.register("theme", ThemeController)
+
 import YoutubePreviewController from "./youtube_preview_controller"
 application.register("youtube-preview", YoutubePreviewController)
