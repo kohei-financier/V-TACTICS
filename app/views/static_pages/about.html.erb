@@ -1,11 +1,32 @@
-<div class="flex flex-col items-center justify-center min-h-screen bg-[#000000]">
-  <div class="font-bold text-white">V-TACTICS</div>
-  <div class="text-white mb-10">「あの定点、どうだったっけ…。」を、すぐに解決するサービス</div>
+<div class="flex flex-col items-center justify-center">
+  <div class="hero" style="min-height: calc(100vh - 100px);">
+    <%= image_tag "sova_recon_bolt.png" %>
+    <div class="hero-overlay bg-opacity-30"></div>
+    <div class="hero-content text-neutral-content text-center">
+      <div class="max-w-xl">
+        <h1 class="mb-5 text-7xl font-bold text-white">V-TACTICS</h1>
+        <p class="mb-14 text-white">
+          VALORANTプレイヤーにとって、<br>
+          初心者にはわかりづらく、慣れたプレイヤーでも決まった行動をしがちな<br>
+          「定点」をすぐに引き出せるサービス。
+        </p>
+        <div class="flex items-center justify-center gap-4">
+          <%= link_to "まずは、色んな「定点」を見てみる！", root_path, class: "btn bg-valorant-color text-white border-valorant-color" %>
+          <% if user_signed_in? %>
+            <%= link_to "お気に入り登録した「定点」を見る（マイページへ）", favorites_technique_path(current_user.id), class: "btn btn-info" %>
+          <% else %>
+            <%= link_to "新規登録して「定点」を追加する", new_user_registration_path, class: "btn btn-info" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="scroll_down" id="type02">
     <a href="#">Scroll</a>
   </div>
   <p class="text-gray-500 animate-bounce"><i class="fa-solid fa-angles-down"></i></p>
 </div>
+
 <div class="p-24 relative xl:mr-0 lg:mr-5 mr-0">
   <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
     <div class="w-full justify-center items-center xl:gap-12 gap-10 grid grid-cols-1">
