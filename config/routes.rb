@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-  root "techniques#index"
+  root "static_pages#about"
   devise_for :users, controllers: {
+    sessions: "users/sessions",
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
