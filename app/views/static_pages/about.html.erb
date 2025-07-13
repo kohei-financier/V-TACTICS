@@ -14,7 +14,7 @@
         </p>
 
         <div class="flex flex-col md:flex-row items-center justify-center gap-4">
-          <%= link_to "まずは、色んな「定点」を見てみる！", root_path, class: "btn bg-valorant-color text-white border-valorant-color" %>
+          <%= link_to "まずは、色んな「定点」を見てみる！", techniques_path, class: "btn bg-valorant-color text-white border-valorant-color" %>
           <% if user_signed_in? %>
             <%= link_to "お気に入り登録した「定点」を見る（マイページへ）", favorites_technique_path(current_user.id), class: "btn btn-info" %>
           <% else %>
@@ -116,7 +116,7 @@
 
 
 <div class="flex flex-col md:flex-row items-center justify-center gap-4 m-24">
-  <%= link_to "まずは、色んな「定点」を見てみる！", root_path, class: "btn bg-valorant-color text-white border-valorant-color" %>
+  <%= link_to "まずは、色んな「定点」を見てみる！", techniques_path, class: "btn bg-valorant-color text-white border-valorant-color" %>
   <% if user_signed_in? %>
     <%= link_to "お気に入り登録した「定点」を見る（マイページへ）", favorites_technique_path(current_user.id), class: "btn btn-info" %>
   <% else %>
