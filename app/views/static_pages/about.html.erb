@@ -1,8 +1,8 @@
 <div class="flex flex-col items-center justify-center">
-  <div class="hero relative" style="min-height: calc(100vh - 100px);">
+  <div class="hero relative" style="min-height: calc(100vh - 80px);">
     <%= image_tag "sova_recon_bolt.png", class: "absolute inset-0 w-full h-full object-cover" %>
 
-    <div class="hero-overlay bg-opacity-30 relative z-10"></div>
+    <div class="hero-overlay bg-black bg-opacity-20 relative z-10"></div>
 
     <div class="hero-content text-neutral-content text-center relative z-10">
       <div class="max-w-xl">
@@ -24,8 +24,13 @@
       </div>
     </div>
   </div>
-  <div class="scroll_down z-10" id="type02">
-    <a href="#">Scroll</a>
+  <div class="scroll_down" id="type07">
+    <a href="#">
+      <div class="arrow"></div>
+      <div class="arrow"></div>
+      <div class="arrow"></div>
+      <span class="text">Scroll</span>
+    </a>
   </div>
   <p class="text-gray-500 animate-bounce"><i class="fa-solid fa-angles-down"></i></p>
 </div>
@@ -114,6 +119,13 @@
   </div>
 </section>
 
+<div class="cp_arrows">
+  <div class="cp_arrow"></div>
+  <div class="cp_arrow"></div>
+  <div class="cp_arrow"></div>
+</div>
+
+<h2 class="text-3xl mt-16 text-valorant-color text-center font-bold lg:text-4xl">こんな方に使って欲しい！</h2>
 
 <div class="flex flex-col md:flex-row items-center justify-center gap-4 m-24">
   <%= link_to "まずは、色んな「定点」を見てみる！", techniques_path, class: "btn bg-valorant-color text-white border-valorant-color" %>
