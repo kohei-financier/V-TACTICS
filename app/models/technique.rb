@@ -13,6 +13,8 @@ class Technique < ApplicationRecord
 
   attr_accessor :category_names
 
+  before_save :assign_categories
+
   after_create_commit :assign_categories_and_send_notifications
 
   def embed_id_from_youtube_url
@@ -69,6 +71,15 @@ class Technique < ApplicationRecord
     end
 
     create_notifications_and_send_emails_for_followers
+  end
+
+  def assign_categories
+    if category_names.present?
+      parsed_categories = category_names.split(",").map(&:strip).uniq
+      self.categories = parsed_categories.map { |name| Category.find_or_create_by(name: name) }
+    else
+      self.categories.clear
+    end
   end
 
   def create_notifications_and_send_emails_for_followers
