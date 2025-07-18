@@ -15,7 +15,7 @@ class Technique < ApplicationRecord
 
   before_save :assign_categories
 
-  after_create_commit :assign_categories_and_send_notifications
+  after_create_commit :send_notifications_for_followers
 
   def embed_id_from_youtube_url
     # 埋め込み形式でIDを抜き出し（プレイヤー用）
@@ -59,30 +59,18 @@ class Technique < ApplicationRecord
 
   private
 
-  def assign_categories_and_send_notifications
-    if category_names.present?
-      parsed_categories = category_names.split(",").map(&:strip).uniq
-
-      self.technique_categories.destroy_all
-      parsed_categories.each do |name|
-        category = Category.find_or_create_by(name: name)
-        self.technique_categories.create(category: category)
-      end
-    end
-
-    create_notifications_and_send_emails_for_followers
-  end
-
   def assign_categories
+    # もしカテゴリー名がコントローラーから送られてきた値に存在する時
     if category_names.present?
       parsed_categories = category_names.split(",").map(&:strip).uniq
       self.categories = parsed_categories.map { |name| Category.find_or_create_by(name: name) }
+    # 存在しない時（もともと入っているならclearする）
     else
       self.categories.clear
     end
   end
 
-  def create_notifications_and_send_emails_for_followers
+  def send_notifications_for_followers
     if categories.any?
       categories.each do |category|
         category.followers.where.not(id: user_id).each do |follower|
