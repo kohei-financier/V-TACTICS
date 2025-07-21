@@ -4,6 +4,7 @@ class TechniquesController < ApplicationController
     @swiper_techniques = Technique.includes(:user).order(created_at: :desc).limit(5)
     @youtube_techniques = Technique.includes(:user).where(source_type: "youtube").order(created_at: :desc).limit(6)
     @twitter_techniques = Technique.includes(:user).where(source_type: "twitter").order(created_at: :desc).limit(6)
+    @categories = Category.all
   end
 
   def search
