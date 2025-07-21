@@ -1,11 +1,7 @@
 <% content_for(:title, t(".title")) %>
 
-
-<div class="text-5xl font-bold text-center m-10">新しいテクニックと出会い</div>
-<div class="text-5xl font-bold text-center m-10">より強くなろう！</div>
-
 <!-- swiper -->
-
+<div class="my-10">
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
     <% youtube_techniques = @swiper_techniques.where(source_type: "youtube") %>
@@ -21,7 +17,7 @@
           <% if technique.categories.any? %><%# if文で囲まないとgap-2が発生してしまう！ %>
             <div>
               <% technique.categories.each do |category| %>
-                <span class="badge badge-info"><%= category.name %></span>
+                <%= link_to category.name, category_path(category), class: "badge badge-info" %>
               <% end %>
             </div>
           <% end %>
@@ -40,19 +36,27 @@
   <div class="swiper-pagination"></div>
   </div>
 </div>
+</div>
 
 <!-- swiper -->
 
 <!-- カテゴリー検索 -->
-<div class="text-center">
-<div class="text-4xl font-bold m-8">CATEGORIES（テクニックを検索してみよう！）</div>
-<%= link_to search_techniques_path(q: {title_cont: "ジェット"}) do %><span class="btn btn-accent btn-wide btn-lg">ジェット</span><% end %>
-<%= link_to search_techniques_path(q: {title_cont: "ヴァイパー"}) do %><span class="btn btn-accent btn-wide btn-lg">ヴァイパー</span><% end %>
-<%= link_to search_techniques_path(q: {title_cont: "サイファー"}) do %><span class="btn btn-accent btn-wide btn-lg">サイファー</span><% end %>
-<%= link_to search_techniques_path(q: {title_cont: "ロータス"}) do %><span class="btn btn-primary btn-wide btn-lg">ロータス</span><% end %>
-<%= link_to search_techniques_path(q: {title_cont: "バインド"}) do %><span class="btn btn-primary btn-wide btn-lg">バインド</span><% end %>
-<%= link_to search_techniques_path(q: {title_cont: "パール"}) do %><span class="btn btn-primary btn-wide btn-lg">パール</span><% end %>
-</div>
+<section>
+  <div class="container py-4 mx-auto">
+    <div class="border-b border-gray-600 pb-4">
+      <h3 class="text-xl font-semibold leading-6">
+        Categories
+      </h3>
+    </div>
+    <div class="relative mx-auto max-w-7xl">
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <% @categories.each do |category| %>
+          <%= link_to category.name, category_path(category), class: "btn btn-sm btn-info" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- カテゴリー検索 -->
 
 <section>
@@ -88,7 +92,7 @@
 
                     <div class="mt-2 mb-2">
                       <% technique.categories.each do |category| %>
-                        <span class="badge badge-info"><%= category.name %></span>
+                        <%= link_to category.name, category_path(category), class: "badge badge-info" %>
                       <% end %>
                     </div>
 
