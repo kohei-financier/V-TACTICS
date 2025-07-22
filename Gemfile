@@ -81,7 +81,7 @@ gem "gretel"
 gem "meta-tags"
 
 # YoutubeAPIの実装
-gem "google-apis-youtube_v3", "~> 0.56.0"
+gem "google-apis-youtube_v3", "~> 0.57.0"
 
 # admin権限を実装
 gem "pundit"
