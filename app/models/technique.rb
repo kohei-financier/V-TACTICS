@@ -64,7 +64,7 @@ class Technique < ApplicationRecord
 
     old_categories = categories.to_a
 
-    new_categories = category_names.split(',').map do |name|
+    new_categories = category_names.split(",").map do |name|
       Category.find_or_create_by(name: name.strip)
     end
 
