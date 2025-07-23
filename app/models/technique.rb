@@ -13,7 +13,7 @@ class Technique < ApplicationRecord
 
   attr_accessor :category_names
 
-  before_save :assign_categories
+  after_save :assign_categories
 
   after_create_commit :send_notifications_for_followers
 
@@ -60,13 +60,21 @@ class Technique < ApplicationRecord
   private
 
   def assign_categories
-    # もしカテゴリー名がコントローラーから送られてきた値に存在する時
-    if category_names.present?
-      parsed_categories = category_names.split(",").map(&:strip).uniq
-      self.categories = parsed_categories.map { |name| Category.find_or_create_by(name: name) }
-    # 存在しない時（もともと入っているならclearする）
-    else
-      self.categories.clear
+    return if category_names.blank?
+
+    old_categories = categories.to_a
+
+    new_categories = category_names.split(",").map do |name|
+      Category.find_or_create_by(name: name.strip)
+    end
+
+    self.categories = new_categories
+    removed_categories = old_categories - new_categories
+
+    removed_categories.each do |category|
+      if category.reload.technique_categories.empty?
+        category.destroy
+      end
     end
   end
 
