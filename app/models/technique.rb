@@ -13,6 +13,11 @@ class Technique < ApplicationRecord
 
   attr_accessor :category_names
 
+  #お気に入り順にソートする
+  scope :most_favorites, -> {
+    left_joins(:favorites).group(:id).order('count(favorites.id) desc')
+  }
+
   after_save :assign_categories
 
   after_create_commit :send_notifications_for_followers
