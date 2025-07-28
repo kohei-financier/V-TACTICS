@@ -40,7 +40,7 @@ class Category < ApplicationRecord
     "サンセット"
   ]
 
-  BEGINNER = ["初心者"]
+  BEGINNER = [ "初心者" ]
 
   has_many :technique_categories, dependent: :destroy
   has_many :techniques, through: :technique_categories
@@ -53,5 +53,4 @@ class Category < ApplicationRecord
   scope :maps, -> { where(name: MAPS) }
   scope :beginner, -> { where(name: BEGINNER) }
   scope :others, -> { where.not(name: AGENTS + MAPS + BEGINNER) }
-
 end
