@@ -32,7 +32,9 @@
               開始地点: <%= technique.video_timestamp %>
             </div>
           </div>
-          <%= render "favorite_button", technique: technique %>
+          <div id="<%= dom_id(technique, :favorite_button) %>">
+            <%= render "techniques/favorite_button", technique: technique %>
+          </div>
           <div class="bottom-0">
           <iframe class="w-full aspect-video"
                   src="https://www.youtube.com/embed/<%= technique.embed_id_from_youtube_url %>&amp;start=<%= technique.calculate_video_timestamp %>"
