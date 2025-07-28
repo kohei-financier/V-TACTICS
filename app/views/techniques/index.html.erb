@@ -59,16 +59,34 @@
 </section>
 <!-- カテゴリー検索 -->
 
+<%= turbo_frame_tag "youtube_section" do %>
+
 <section>
   <div class="container py-24 mx-auto">
     <div class="border-b border-gray-600 pb-4">
       <h3 class="text-xl font-semibold leading-6">
-        Latest Movies
+        Movies
       </h3>
     </div>
 
+    <div class="mt-8 text-center">
+
+      <%# UI切り替えの条件式 %>
+      <% new_active = !params[:most_favorites].present? %>
+      <% favorites_active = params[:most_favorites].present? %>
+
+      表示順：
+      <div class="join">
+        <%= link_to "新着順", techniques_path,
+              class: "join-item btn btn-sm #{'btn-success' if new_active}" %>
+
+        <%= link_to "お気に入り数順", techniques_path(most_favorites: "true"),
+              class: "join-item btn btn-sm #{'btn-warning' if favorites_active}" %>
+      </div>
+    </div>
+
     <div class="relative mx-auto max-w-7xl">
-      <div class="mx-auto mt-12 grid max-w-lg gap-12 lg:max-w-none lg:grid-cols-3">
+      <div class="mx-auto mt-8 grid max-w-lg gap-12 lg:max-w-none lg:grid-cols-3">
         <% if @youtube_techniques.present? %>
           <% @youtube_techniques.each do |technique| %>
             <div class="mb-12 flex flex-col overflow-hidden">
@@ -146,10 +164,11 @@
   </div>
 </section>
 
+<% end %>
+
 
 <div class="text-4xl font-bold text-center mt-8">NEW POST</div>
 <div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">
-  <!--<% twitter_techniques = @techniques.where(source_type: "twitter") %>-->
   <% if @twitter_techniques.present? %>
     <% @twitter_techniques.each do |technique| %>
       <div class="w-1/3 rounded overflow-hidden shadow-xl flex flex-col">
