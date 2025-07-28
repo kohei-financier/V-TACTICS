@@ -48,12 +48,52 @@
         Categories
       </h3>
     </div>
-    <div class="relative mx-auto max-w-7xl">
-      <div class="mt-12 flex flex-wrap justify-center gap-4">
-        <% @categories.each do |category| %>
-          <%= link_to category.name, category_path(category), class: "btn btn-sm btn-info" %>
+
+    <div class="mt-8 flex w-full flex-col lg:flex-row">
+      <%# 初心者 %>
+      <div class="card rounded-box grid min-h-32 grow place-items-center p-4">
+      <div class="text-center font-bold">初心者はまずココから！</div>
+        <% @beginner_categories.each do |category| %>
+          <%= link_to category.name, category_path(category), class: "btn btn-sm btn-success" %>
         <% end %>
       </div>
+
+      <div class="divider lg:divider-horizontal"></div>
+
+      <%# エージェント %>
+      <div class="card rounded-box grid min-h-32 grow place-items-center p-4">
+      <div class="text-center font-bold">エージェント</div>
+        <div class="flex flex-wrap justify-center gap-2">
+          <% @agents_categories.each do |category| %>
+            <%= link_to category.name, category_path(category), class: "btn btn-sm btn-info" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="divider lg:divider-horizontal"></div>
+
+      <%# マップ %>
+      <div class="card rounded-box grid min-h-32 grow place-items-center p-4">
+      <div class="text-center font-bold">マップ</div>
+        <div class="flex flex-wrap justify-center gap-2">
+          <% @maps_categories.each do |category| %>
+            <%= link_to category.name, category_path(category), class: "btn btn-sm btn-warning" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="divider lg:divider-horizontal"></div>
+
+      <%# その他 %>
+      <div class="card rounded-box grid min-h-32 grow place-items-center p-4">
+      <div class="text-center font-bold">その他のカテゴリー</div>
+        <div class="flex flex-wrap justify-center gap-2">
+          <% @others_categories.each do |category| %>
+            <%= link_to category.name, category_path(category), class: "btn btn-sm" %>
+          <% end %>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -90,7 +130,7 @@
         <% if @youtube_techniques.present? %>
           <% @youtube_techniques.each do |technique| %>
             <div class="mb-12 flex flex-col overflow-hidden">
-              <%= link_to techniques_youtube_path(technique) do %>
+              <%= link_to techniques_youtube_path(technique), data: { turbo_frame: "_top" } do %>
 
                 <%# youtube %>
                 <div class="shrink-0">
@@ -110,7 +150,7 @@
 
                     <div class="mt-2 mb-2">
                       <% technique.categories.each do |category| %>
-                        <%= link_to category.name, category_path(category), class: "badge badge-info" %>
+                        <%= link_to category.name, category_path(category), data: { turbo_frame: "_top" }, class: "badge badge-info" %>
                       <% end %>
                     </div>
 
@@ -130,7 +170,7 @@
                 </div>
 
                 <div class="flex justify-center items-center gap-2 mt-2">
-                  <%= link_to "詳細画面へ", techniques_youtube_path(technique), class: "btn btn-primary" %>
+                  <%= link_to "詳細画面へ", techniques_youtube_path(technique), data: { turbo_frame: "_top" }, class: "btn btn-primary" %>
                   <div id="<%= dom_id(technique, :favorite_button) %>">
                     <%= render "techniques/favorite_button", technique: technique %>
                   </div>

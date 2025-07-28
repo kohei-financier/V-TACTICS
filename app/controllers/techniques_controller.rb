@@ -9,7 +9,11 @@ class TechniquesController < ApplicationController
     @swiper_techniques = Technique.includes(:user).order(created_at: :desc).limit(5)
     @youtube_techniques = @techniques.where(source_type: "youtube").limit(6)
     @twitter_techniques = @techniques.where(source_type: "twitter").limit(6)
-    @categories = Category.all
+
+    @beginner_categories  = Category.beginner
+    @agents_categories = Category.agents
+    @maps_categories = Category.maps
+    @others_categories = Category.others
   end
 
   def search
