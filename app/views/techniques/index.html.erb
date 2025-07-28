@@ -44,7 +44,7 @@
 <section>
   <div class="container py-4 mx-auto">
     <div class="border-b border-gray-600 pb-4">
-      <h3 class="text-xl font-semibold leading-6">
+      <h3 class="text-xl text-center font-semibold leading-6">
         Categories
       </h3>
     </div>
@@ -102,9 +102,9 @@
 <%= turbo_frame_tag "youtube_section" do %>
 
 <section>
-  <div class="container py-24 mx-auto">
+  <div class="container py-8 mx-auto">
     <div class="border-b border-gray-600 pb-4">
-      <h3 class="text-xl font-semibold leading-6">
+      <h3 class="text-xl text-center font-semibold leading-6">
         Movies
       </h3>
     </div>
@@ -117,91 +117,13 @@
 
       表示順：
       <div class="join">
-        <%= link_to "新着順", techniques_path,
-              class: "join-item btn btn-sm #{'btn-success' if new_active}" %>
+        <%= link_to "新着順", techniques_path, class: "join-item btn btn-sm #{'btn-success' if new_active}" %>
 
-        <%= link_to "お気に入り数順", techniques_path(most_favorites: "true"),
-              class: "join-item btn btn-sm #{'btn-warning' if favorites_active}" %>
+        <%= link_to "お気に入り数順", techniques_path(most_favorites: "true"), class: "join-item btn btn-sm #{'btn-warning' if favorites_active}" %>
       </div>
     </div>
 
-    <div class="relative mx-auto max-w-7xl">
-      <div class="mx-auto mt-8 grid max-w-lg gap-12 lg:max-w-none lg:grid-cols-3">
-        <% if @youtube_techniques.present? %>
-          <% @youtube_techniques.each do |technique| %>
-            <div class="mb-12 flex flex-col overflow-hidden">
-              <%= link_to techniques_youtube_path(technique), data: { turbo_frame: "_top" } do %>
-
-                <%# youtube %>
-                <div class="shrink-0">
-                  <iframe class="w-full aspect-video"
-                          src="https://www.youtube.com/embed/<%= technique.embed_id_from_youtube_url %>&start=<%= technique.calculate_video_timestamp %>"
-                          frameborder="0"
-                          allowfullscreen>
-                  </iframe>
-                </div>
-
-                <%# テキスト情報 %>
-                <div class="flex flex-1 flex-col justify-between pt-6 pl-6 pr-6">
-                  <div class="flex-1">
-                    <div class="flex text-sm">
-                      <span>開始地点: <%= technique.video_timestamp %></span>
-                    </div>
-
-                    <div class="mt-2 mb-2">
-                      <% technique.categories.each do |category| %>
-                        <%= link_to category.name, category_path(category), data: { turbo_frame: "_top" }, class: "badge badge-info" %>
-                      <% end %>
-                    </div>
-
-                    <div class="mt-3 block">
-                      <h3 class="text-2xl font-semibold leading-none tracking-tighter mb-4">
-                        <%= technique.title %>
-                      </h3>
-                      <%# p class="text-lg font-normal mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                        facilis asperiores porro quaerat doloribus, eveniet dolore.
-                        Adipisci tempora aut inventore optio animi., tempore
-                        temporibus quo laudantium.
-                      </p%>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="flex justify-center items-center gap-2 mt-2">
-                  <%= link_to "詳細画面へ", techniques_youtube_path(technique), data: { turbo_frame: "_top" }, class: "btn btn-primary" %>
-                  <div id="<%= dom_id(technique, :favorite_button) %>">
-                    <%= render "techniques/favorite_button", technique: technique %>
-                  </div>
-                </div>
-
-              <% end %>
-
-            </div>
-          <% end %>
-
-          <% else %>
-
-            <div role="alert" class="alert alert-warning">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 shrink-0 stroke-current"
-                  fill="none"
-                  viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-              <span>YouTubeのテクニックは投稿されていません</span>
-            </div>
-
-          <% end %>
-
-      </div>
-    </div>
+    <%= render "techniques/youtube_technique" %>
 
   </div>
 </section>
@@ -209,39 +131,31 @@
 <% end %>
 
 
-<div class="text-4xl font-bold text-center mt-8">NEW POST</div>
-<div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">
-  <% if @twitter_techniques.present? %>
-    <% @twitter_techniques.each do |technique| %>
-      <div class="w-1/3 rounded overflow-hidden shadow-xl flex flex-col">
-        <div class="px-6 py-4 flex-grow">
-          <div class="font-bold text-xl mb-2">
-            <span><%= link_to technique.title, techniques_twitter_path(technique) %></span>
-          </div>
-        </div>
-        <%= render "favorite_button", technique: technique %>
-        <div class="bottom-0">
-        <blockquote class="twitter-tweet">
-          <a href="<%= technique.x_to_twitter_change_url || technique.source_url %>"></a>
-        </blockquote>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <div role="alert" class="alert alert-warning">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 shrink-0 stroke-current"
-          fill="none"
-          viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-      <span>Xのテクニックは投稿されていません</span>
+<%= turbo_frame_tag "twitter_section" do %>
+
+<section>
+  <div class="container py-8 mx-auto">
+    <div class="border-b border-gray-600 pb-4">
+      <h3 class="text-xl text-center font-semibold leading-6">
+        Posts
+      </h3>
     </div>
-  <% end %>
-</div>
+
+    <div class="mt-8 text-center">
+
+      <% new_active = !params[:most_favorites].present? %>
+      <% favorites_active = params[:most_favorites].present? %>
+
+      表示順：
+      <div class="join">
+        <%= link_to "新着順", techniques_path, class: "join-item btn btn-sm #{'btn-success' if new_active}" %>
+        <%= link_to "お気に入り数順", techniques_path(most_favorites: "true"), class: "join-item btn btn-sm #{'btn-warning' if favorites_active}" %>
+      </div>
+    </div>
+
+    <%= render "techniques/twitter_technique" %>
+
+  </div>
+</section>
+
+<% end %>
