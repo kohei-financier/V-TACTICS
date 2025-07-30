@@ -6,7 +6,7 @@ class TechniquesController < ApplicationController
       @techniques = Technique.includes(:user).order(created_at: :desc)
     end
 
-    @swiper_techniques = Technique.includes(:user).order(created_at: :desc).limit(5)
+    @swiper_techniques = Technique.most_favorites.limit(5)
     @youtube_techniques = @techniques.where(source_type: "youtube").limit(6)
     @twitter_techniques = @techniques.where(source_type: "twitter").limit(6)
 
