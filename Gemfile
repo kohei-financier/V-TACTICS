@@ -74,14 +74,14 @@ gem "omniauth-google-oauth2"
 
 gem "rails-i18n", "~> 7.0.0"
 
-gem "ransack", "4.2.1"
+gem "ransack"
 
 gem "gretel"
 
 gem "meta-tags"
 
 # YoutubeAPIの実装
-gem "google-apis-youtube_v3", "~> 0.56.0"
+gem "google-apis-youtube_v3"
 
 # admin権限を実装
 gem "pundit"
@@ -90,4 +90,4 @@ gem "pundit"
 gem "rails_admin", "~> 3.0"
 gem "sassc-rails"
 
-gem "sidekiq", "~> 8.0"
+gem "sidekiq"
