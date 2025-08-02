@@ -64,8 +64,8 @@ group :test do
   gem "shoulda-matchers"
 end
 
-gem "tailwindcss-rails", "~> 3.3.2"
-gem "tailwindcss-ruby", "3.4.17"
+gem "tailwindcss-rails", "~> 4.3.0"
+gem "tailwindcss-ruby", "4.1.11"
 
 gem "devise"
 gem "omniauth"
