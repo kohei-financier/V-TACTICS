@@ -10,7 +10,7 @@
           1,
           1,
           1,
-          25,
+          27,
           null,
           1,
           null,
@@ -62,13 +62,13 @@
         "lines": [
           1,
           1,
-          6,
-          6,
+          7,
+          7,
           null,
           null,
           1,
           null,
-          6,
+          7,
           null,
           null,
           null,
@@ -523,6 +523,19 @@
           null
         ]
       },
+      "/myapp/app/controllers/static_pages_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
       "/myapp/app/controllers/users/sessions_controller.rb": {
         "lines": [
           null,
@@ -680,20 +693,6 @@
           0,
           0,
           0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/myapp/app/controllers/static_pages_controller.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
           0,
           0
         ],
@@ -1233,6 +1232,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1754308043
+    "timestamp": 1754310879
   }
 }
