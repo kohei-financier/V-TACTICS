@@ -115,4 +115,5 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   config.hosts << "v-tactics.com"      # 独自ドメイン
   config.hosts << "www.v-tactics.com/"  # サブドメイン
+  config.hosts << "v-tactics.onrender.com/"  # プルリクエスト時のプレビュー
 end
