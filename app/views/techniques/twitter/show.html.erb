@@ -8,6 +8,11 @@
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <div class="mt-4 text-xl font-bold"><%= @technique.title %></div>
 
+    <div class="mt-4 mb-4">
+    <% @technique.categories.each do |category| %>
+      <span class="badge badge-outline badge-primary"><%= category.name %></span>
+    <% end %>
+    </div>
 
     <div class="mt-2 flex space-x-3">
 
