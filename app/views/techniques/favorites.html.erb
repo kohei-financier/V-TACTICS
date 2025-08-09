@@ -1,7 +1,9 @@
 <% content_for(:title, t(".title")) %>
 
-<div class="text-5xl font-bold mt-8 ml-10">マイページ</div>
-<div class="text-xl font-semibold underline mt-4 ml-10">このページではお気に入りしたテクニックが確認できます</div>
+<div class="text-center">
+  <div class="text-5xl font-bold mt-8 ml-10">マイページ</div>
+  <div class="text-xl font-semibold underline mt-4 ml-10">このページではお気に入りしたテクニックが確認できます</div>
+</div>
 
 <%
 =begin%>
@@ -43,125 +45,53 @@
 <%
 =end%>
 
-<h2>フォロー中のカテゴリー</h2>
-<% if @followed_categories.present? %>
-  <ul>
-    <% @followed_categories.each do |category| %>
-      <li><%= link_to category.name, category_path(category) %><%= button_to "フォロー解除", unfollow_category_path(category), method: :delete, data: { confirm: "本当にフォローを解除しますか？"} %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <div>まだフォローしているカテゴリーはありません</div>
-  <div><%= link_to "カテゴリー一覧を見る", categories_path %></div>
-<% end %>
+<%# フォロー中のカテゴリー表示 %>
 
-
-<div class="text-4xl font-bold text-center mt-8">YouTube</div>
-<div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">
-  <% youtube_techniques = @favorite_techniques.where(source_type: "youtube") %>
-  <% if youtube_techniques.present? %>
-    <% youtube_techniques.each do |technique| %>
-      <div class="w-1/3 rounded overflow-hidden shadow-xl flex flex-col">
-        <div class="px-6 py-4 flex-grow">
-          <div class="font-bold text-xl mb-2">
-            <span><%= link_to technique.title, techniques_youtube_path(technique) %></span>
-          </div>
-          <div class="text-base">
-            開始地点: <%= technique.video_timestamp %>
-          </div>
+<div class="text-center">
+  <div class="text-2xl font-semibold m-8">フォロー中のカテゴリー</div>
+  <div>
+    <% if @followed_categories.present? %>
+      <% @followed_categories.each do |category| %>
+        <div class="flex justify-center items-center space-x-4 m-2">
+          <%= link_to category.name, category_path(category), class: "text-blue-600 hover:underline" %>
+          <%= button_to "フォロー解除", unfollow_category_path(category), method: :delete, data: { confirm: "本当にフォローを解除しますか?"}, class: "hidden h-8 w-32 rounded-full bg-red-500 font-extrabold text-white hover:bg-red-600 md:block" %>
         </div>
-        <div class="px-6 pt-2 pb-2">
-          <% if current_user.favorite?(technique) %>
-            <%= link_to favorite_path(current_user.favorites.find_by(technique_id: technique.id)), id: "unfavorite-button-for-technique-#{technique.id}", data: { turbo_method: :delete } do %>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-            <% end %>
-          <% else %>
-            <%= link_to favorites_path(technique_id: technique.id), id: "favorite-button-for-technique-#{technique.id}", data: { turbo_method: :post } do %>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
-              </svg>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="bottom-0">
-        <iframe class="w-full aspect-video"
-                src="https://www.youtube.com/embed/<%= technique.embed_id_from_youtube_url %>&amp;start=<%= technique.calculate_video_timestamp %>"
-                frameborder="0"
-                allowfullscreen>
-        </iframe>
-        </div>
-      </div>
+      <% end %>
+    <% else %>
+      <div>まだフォローしているカテゴリーはありません</div>
+      <div><%= link_to "カテゴリー一覧を見る", categories_path %></div>
     <% end %>
-  <% else %>
-    <div role="alert" class="alert alert-warning">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 shrink-0 stroke-current"
-          fill="none"
-          viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-      <span>お気に入りに追加されたYouTubeのテクニックはありません</span>
-    </div>
-  <% end %>
+  </div>
 </div>
 
+<%# お気に入りした投稿の一覧表示 %>
 
-
-<div class="text-4xl font-bold text-center mt-8">X</div>
-<div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">
-  <% twitter_techniques = @favorite_techniques.where(source_type: "twitter") %>
-  <% if twitter_techniques.present? %>
-    <% twitter_techniques.each do |technique| %>
-      <div class="w-1/3 rounded overflow-hidden shadow-xl flex flex-col">
-        <div class="px-6 py-4 flex-grow">
-          <div class="font-bold text-xl mb-2">
-            <span><%= link_to technique.title, techniques_twitter_path(technique) %></span>
-          </div>
-        </div>
-        <div class="px-6 pt-2 pb-2">
-          <% if current_user.favorite?(technique) %>
-            <%= link_to favorite_path(current_user.favorites.find_by(technique_id: technique.id)), id: "unfavorite-button-for-technique-#{technique.id}", data: { turbo_method: :delete } do %>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-            <% end %>
-          <% else %>
-            <%= link_to favorites_path(technique_id: technique.id), id: "favorite-button-for-technique-#{technique.id}", data: { turbo_method: :post } do %>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
-              </svg>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="bottom-0">
-        <blockquote class="twitter-tweet">
-          <a href="<%= technique.x_to_twitter_change_url || technique.source_url %>"></a>
-        </blockquote>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <div role="alert" class="alert alert-warning">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 shrink-0 stroke-current"
-          fill="none"
-          viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-      <span>お気に入りに追加されたXのテクニックはありません</span>
+<section>
+  <div class="container py-8 mx-auto">
+    <div class="border-b border-gray-600 pb-4">
+      <h3 class="text-xl text-center font-semibold leading-6">
+        Movies
+      </h3>
     </div>
-  <% end %>
-</div>
+
+  <% @youtube_techniques = @favorite_techniques.where(source_type: "youtube") %>
+  <%= render "techniques/youtube_technique" %>
+  </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container py-8 mx-auto">
+    <div class="border-b border-gray-600 pb-4">
+      <h3 class="text-xl text-center font-semibold leading-6">
+        Posts
+      </h3>
+    </div>
+
+  <% @twitter_techniques = @favorite_techniques.where(source_type: "twitter") %>
+  <%= render "techniques/twitter_technique" %>
+  </div>
+
+  </div>
+</section>
