@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_29_031041) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_10_081743) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
@@ -24,13 +30,50 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_29_031041) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "folders", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_folders_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_follows_on_category_id"
+    t.index ["user_id", "category_id"], name: "index_follows_on_user_id_and_category_id", unique: true
+    t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "notifiable_type", null: false
+    t.bigint "notifiable_id", null: false
+    t.boolean "read", default: false, null: false
+    t.string "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "technique_categories", force: :cascade do |t|
+    t.bigint "technique_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_technique_categories_on_category_id"
+    t.index ["technique_id"], name: "index_technique_categories_on_technique_id"
+  end
+
   create_table "techniques", force: :cascade do |t|
     t.string "title", null: false
     t.integer "source_type", null: false
     t.string "source_url", null: false
     t.string "video_timestamp"
-    t.string "character"
-    t.string "map"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,11 +91,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_29_031041) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "favorites", "techniques"
   add_foreign_key "favorites", "users"
+  add_foreign_key "folders", "users"
+  add_foreign_key "follows", "categories"
+  add_foreign_key "follows", "users"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "technique_categories", "categories"
+  add_foreign_key "technique_categories", "techniques"
   add_foreign_key "techniques", "users"
 end

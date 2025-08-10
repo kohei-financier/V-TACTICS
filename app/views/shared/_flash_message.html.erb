@@ -1,5 +1,3 @@
-<!--<p class="notice"><%= notice %></p>-->
-<!--<p class="alert"><%= alert %></p>-->
 <% flash.each do |message_type, message| %>
 
   <% if message_type == "notice" %>
@@ -34,7 +32,7 @@
       <span><%= message %></span>
     </div>
 
-  <% elsif message_type == "error" %>
+  <% elsif message_type == "error" || "alert" %>
     <div role="alert" class="alert alert-error">
       <svg
         xmlns="http://www.w3.org/2000/svg"

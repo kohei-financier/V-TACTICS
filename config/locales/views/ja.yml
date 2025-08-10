@@ -28,3 +28,5 @@ ja:
         title: "テクニック詳細"
       edit:
         title: "テクニック編集"
+    favorites:
+      title: "マイページ"

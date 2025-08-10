@@ -1,0 +1,8 @@
+<div class="text-center">
+  <div class="text-6xl font-bold m-8">作成されているカテゴリー一覧</div>
+  <div>
+    <% @categories.each do |category| %>
+      <div class="btn btn-primary m-8 btn-wide sm:btn-sm md:btn-md lg:btn-lg"><%= link_to category.name, category_path(category) %></div>
+    <% end %>
+  </div>
+</div>

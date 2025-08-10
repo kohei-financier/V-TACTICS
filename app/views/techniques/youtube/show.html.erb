@@ -9,31 +9,43 @@
               allowfullscreen>
       </iframe>
     </div>
-    <div class="mt-4 text-xl font-bold"><%= @technique.title%></div>
-    <!-- <div class="mt-4 text-md font-bold">チャンネルのタイトル</div> -->
 
-    <div class="pt-2 pb-2">
-      <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: @technique.character}) do %>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          <%= @technique.character %>
-        </span>
-      <% end %>
-      <%= link_to search_techniques_path(q: {title_or_character_or_map_cont: @technique.map}) do %>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          <%= @technique.map %>
-        </span>
-      <% end %>
+    <div class="mt-4 text-xl font-bold"><%= @technique.title %></div>
+    <div class="mt-2 text-md font-bold">元動画：<%= @movie_title %></div>
+
+    <div class="mt-4 mb-4">
+    <% @technique.categories.each do |category| %>
+      <span class="badge badge-outline badge-primary"><%= category.name %></span>
+    <% end %>
     </div>
 
     <div class="mt-2 flex space-x-3">
 
       <a href="https://www.youtube.com/watch?v=<%= @technique.only_id_from_youtube_url %>" class="btn bg-red-500 text-white" target="_blank" rel="noopener noreferrer">YouTubeへ</a>
-      <!-- <a class="btn">Xでシェア</a> -->
+      <%= link_to "https://twitter.com/intent/tweet?url=#{request.url}%0a&text=#{CGI.escape("#{@technique.title}")}&hashtags=#{CGI.escape('VTACTICS')}", target: '_blank', rel: "noopener noreferrer" do %>
+        <div class="btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+          </svg>
+          で共有する
+        </div>
+      <% end %>
 
       <% if user_signed_in? && current_user.own?(@technique) %>
         <%= link_to "編集", edit_techniques_youtube_path(@technique), id: "button-edit-#{@technique.id}", class: "btn" %>
         <%= link_to "削除", techniques_youtube_path(@technique), id: "button-destroy-#{@technique.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: "btn" %>
       <% end %>
+
+      <!-- マイフォルダに保存 ボタン -->
+      <div class="tooltip" data-tip="もうすぐ実装予定！">
+        <a href="#" class="btn btn-primary">マイフォルダに保存</a>
+      </div>
+
+      <%# お気に入りボタン %>
+      <div id="<%= dom_id(@technique, :favorite_button) %>">
+        <%= render "techniques/favorite_button", technique: @technique %>
+      </div>
+
     </div>
 
   </div>
