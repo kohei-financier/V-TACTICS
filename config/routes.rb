@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-  root "techniques#index"
+  root "static_pages#about"
   devise_for :users, controllers: {
+    sessions: "users/sessions",
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   resources :techniques, only: %i[index] do
+    get "autocomplete", on: :collection
     get "search", on: :collection
     get "favorites", on: :member
   end
@@ -36,4 +38,5 @@ Rails.application.routes.draw do
       delete "unfollow", to: "follows#destroy"
     end
   end
+  get "/youtube/title", to: "youtube_api#title"
 end
