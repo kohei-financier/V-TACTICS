@@ -5,7 +5,7 @@ gem "rails", "~> 7.2.2", ">= 7.2.2.1"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.6"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
@@ -39,7 +39,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", "~> 7.0.2", require: false
+  gem "brakeman", "~> 7.1.0", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
@@ -61,6 +61,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers", "~> 5.3", ">= 5.3.1"
   gem "simplecov", require: false
+  gem "shoulda-matchers"
 end
 
 gem "tailwindcss-rails", "~> 3.3.2"
@@ -73,14 +74,14 @@ gem "omniauth-google-oauth2"
 
 gem "rails-i18n", "~> 7.0.0"
 
-gem "ransack", "4.2.1"
+gem "ransack"
 
 gem "gretel"
 
 gem "meta-tags"
 
 # YoutubeAPIの実装
-gem "google-apis-youtube_v3", "~> 0.56.0"
+gem "google-apis-youtube_v3"
 
 # admin権限を実装
 gem "pundit"
@@ -89,4 +90,4 @@ gem "pundit"
 gem "rails_admin", "~> 3.0"
 gem "sassc-rails"
 
-gem "sidekiq", "~> 8.0"
+gem "sidekiq"

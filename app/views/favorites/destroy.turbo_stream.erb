@@ -1,0 +1,5 @@
+<%= turbo_stream.replace dom_id(@technique, :favorite_button) do %>
+  <div id="<%= dom_id(@technique, :favorite_button) %>">
+    <%= render "techniques/favorite_button", technique: @technique %>
+  </div>
+<% end %>

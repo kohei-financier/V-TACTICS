@@ -40,6 +40,12 @@
       <div class="tooltip" data-tip="もうすぐ実装予定！">
         <a href="#" class="btn btn-primary">マイフォルダに保存</a>
       </div>
+
+      <%# お気に入りボタン %>
+      <div id="<%= dom_id(@technique, :favorite_button) %>">
+        <%= render "techniques/favorite_button", technique: @technique %>
+      </div>
+
     </div>
 
   </div>
