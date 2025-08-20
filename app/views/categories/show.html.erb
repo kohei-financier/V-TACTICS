@@ -11,48 +11,65 @@
       <p>フォロー機能を利用するには<a href="<%= new_user_session_path %>">ログイン</a>してください。</p>
     <% end %>
   </div>
+</div>
 
-  <div class="flex flex-wrap justify-center mt-6 md:gap-10 md:m-12">
-  <% if @techniques.present? %>
-    <% @techniques.each do |technique| %>
-      <div class="w-1/3 rounded overflow-hidden shadow-xl flex flex-col">
-        <div class="px-6 py-4 flex-grow">
-          <div class="font-bold text-xl mb-2">
-            <span><%= link_to technique.title, techniques_youtube_path(technique) %></span>
-          </div>
-          <div class="text-base">
-            開始地点: <%= technique.video_timestamp %>
-          </div>
-        </div>
-        <div class="px-6 pt-2 pb-2">
-          <div id="<%= dom_id(technique, :favorite_button) %>">
-            <%= render "techniques/favorite_button", technique: technique %>
-          </div>
-        </div>
-        <div class="bottom-0">
-        <iframe class="w-full aspect-video"
-                src="https://www.youtube.com/embed/<%= technique.embed_id_from_youtube_url %>&amp;start=<%= technique.calculate_video_timestamp %>"
-                frameborder="0"
-                allowfullscreen>
-        </iframe>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <div role="alert" class="alert alert-warning">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 shrink-0 stroke-current"
-          fill="none"
-          viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-      <span>YouTubeのテクニックは投稿されていません</span>
+<%= turbo_frame_tag "youtube_section" do %>
+
+<section>
+  <div class="container py-8 mx-auto">
+    <div class="border-b border-gray-600 pb-4">
+      <h3 class="text-xl text-center font-semibold leading-6">
+        Movies
+      </h3>
     </div>
-  <% end %>
-</div>
-</div>
+
+    <div class="mt-8 text-center">
+
+      <%# UI切り替えの条件式 %>
+      <% new_active = !params[:most_favorites].present? %>
+      <% favorites_active = params[:most_favorites].present? %>
+
+      表示順：
+      <div class="join">
+        <%= link_to "新着順", techniques_path, class: "join-item btn btn-sm #{'btn-success' if new_active}" %>
+
+        <%= link_to "お気に入り数順", techniques_path(most_favorites: "true"), class: "join-item btn btn-sm #{'btn-warning' if favorites_active}" %>
+      </div>
+    </div>
+
+    <%= render "categories/youtube_technique" %>
+
+  </div>
+</section>
+
+<% end %>
+
+
+<%= turbo_frame_tag "twitter_section" do %>
+
+<section>
+  <div class="container py-8 mx-auto">
+    <div class="border-b border-gray-600 pb-4">
+      <h3 class="text-xl text-center font-semibold leading-6">
+        Posts
+      </h3>
+    </div>
+
+    <div class="mt-8 text-center">
+
+      <% new_active = !params[:most_favorites].present? %>
+      <% favorites_active = params[:most_favorites].present? %>
+
+      表示順：
+      <div class="join">
+        <%= link_to "新着順", techniques_path, class: "join-item btn btn-sm #{'btn-success' if new_active}" %>
+        <%= link_to "お気に入り数順", techniques_path(most_favorites: "true"), class: "join-item btn btn-sm #{'btn-warning' if favorites_active}" %>
+      </div>
+    </div>
+
+    <%= render "categories/twitter_technique" %>
+
+  </div>
+</section>
+
+<% end %>

@@ -6,5 +6,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @techniques = @category.techniques.order(created_at: :desc)
+    @youtube_categories_techniques = @techniques.where(source_type: "youtube")
+    @twitter_categories_techniques = @techniques.where(source_type: "twitter")
   end
 end
