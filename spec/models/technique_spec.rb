@@ -33,4 +33,36 @@ RSpec.describe Technique, type: :model do
       end
     end
   end
+
+  describe "calculate_video_timestampメソッドのチェック" do
+    let(:technique) { build(:technique, :youtube, user: user, video_timestamp: video_timestamp) }
+
+    context "HH:MM:SS形式の場合" do
+      let(:video_timestamp) { "01:30:30" }
+      it "正しく秒変換できること" do
+        expect(technique.calculate_video_timestamp).to eq(5430)
+      end
+    end
+
+    context "MM:SS形式の場合" do
+      let(:video_timestamp) { "30:30" }
+      it "正しく秒変換できること" do
+        expect(technique.calculate_video_timestamp).to eq(1830)
+      end
+    end
+
+    context "SS形式の場合" do
+      let(:video_timestamp) { "30" }
+      it "正しく秒変換できること" do
+        expect(technique.calculate_video_timestamp).to eq(30)
+      end
+    end
+
+    context "予期せぬ値の場合" do
+      let(:video_timestamp) { "01:30:30:30" }
+      it "0になること" do
+        expect(technique.calculate_video_timestamp).to eq(0)
+      end
+    end
+  end
 end
