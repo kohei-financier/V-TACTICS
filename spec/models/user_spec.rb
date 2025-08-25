@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
   end
 
   let(:owner_user) { create(:user) }
-  let(:technique) { create(:technique, user: owner_user) }
+  let(:technique) { create(:technique, :youtube, user: owner_user) }
 
   describe "techniqueの所有者かどうかチェック" do
     context "テクニックの所有者の場合" do
@@ -67,7 +67,7 @@ RSpec.describe User, type: :model do
   describe "お気に入り機能のチェック" do
     # 事前にデータを作成しておく
     let!(:user) { create(:user) }
-    let!(:technique) { create(:technique) }
+    let!(:technique) { create(:technique, :youtube) }
 
     context "favoriteメソッド" do
       it "テクニックをお気に入り登録できるか" do
