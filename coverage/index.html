@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-25T14:25:28+09:00">2025-08-25T14:25:28+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-25T15:33:59+09:00">2025-08-25T15:33:59+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,7 +22,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  29.52%
+  29.61%
 </span>
 
      </span>
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>559</b> relevant lines,
-    <span class="green"><b>165</b> lines covered</span> and
-    <span class="red"><b>394</b> lines missed. </span>
+    <b>564</b> relevant lines,
+    <span class="green"><b>167</b> lines covered</span> and
+    <span class="red"><b>397</b> lines missed. </span>
     (<span class="red">
-  29.52%
+  29.61%
 </span>
 )
   </div>
@@ -456,12 +456,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#fe9f88a9ed2e8ca9653f17f865491dc9f48ae1e5" class="src_link" title="app/models/technique.rb">app/models/technique.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">68.63 %</td>
-            <td class="cell--number">102</td>
-            <td class="cell--number">51</td>
-            <td class="cell--number">35</td>
-            <td class="cell--number">16</td>
-            <td class="cell--number">1.41</td>
+            <td class="red strong cell--number t-file__coverage">66.07 %</td>
+            <td class="cell--number">117</td>
+            <td class="cell--number">56</td>
+            <td class="cell--number">37</td>
+            <td class="cell--number">19</td>
+            <td class="cell--number">1.32</td>
             
           </tr>
         
@@ -857,14 +857,14 @@
     <span class="group_name">Models</span>
     (<span class="covered_percent">
       <span class="yellow">
-  85.32%
+  83.33%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.91
+         1.84
        </span>
     </span> hits/line
     )
@@ -877,11 +877,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>109</b> relevant lines,
-    <span class="green"><b>93</b> lines covered</span> and
-    <span class="red"><b>16</b> lines missed. </span>
+    <b>114</b> relevant lines,
+    <span class="green"><b>95</b> lines covered</span> and
+    <span class="red"><b>19</b> lines missed. </span>
     (<span class="yellow">
-  85.32%
+  83.33%
 </span>
 )
   </div>
@@ -972,12 +972,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#fe9f88a9ed2e8ca9653f17f865491dc9f48ae1e5" class="src_link" title="app/models/technique.rb">app/models/technique.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">68.63 %</td>
-            <td class="cell--number">102</td>
-            <td class="cell--number">51</td>
-            <td class="cell--number">35</td>
-            <td class="cell--number">16</td>
-            <td class="cell--number">1.41</td>
+            <td class="red strong cell--number t-file__coverage">66.07 %</td>
+            <td class="cell--number">117</td>
+            <td class="cell--number">56</td>
+            <td class="cell--number">37</td>
+            <td class="cell--number">19</td>
+            <td class="cell--number">1.32</td>
             
           </tr>
         
@@ -3965,7 +3965,7 @@
 
             
 
-            <code class="ruby">    @movie_title = youtube_service.get_movie_title(@technique.only_id_from_youtube_url)</code>
+            <code class="ruby">    @movie_title = youtube_service.get_movie_title(@technique.youtube_video_id)</code>
           </li>
         </div>
       
@@ -10006,7 +10006,7 @@
     <h3>app/models/technique.rb</h3>
     <h4>
       <span class="red">
-  68.63%
+  66.07%
 </span>
 
       lines covered
@@ -10015,9 +10015,9 @@
     
 
     <div class="t-line-summary">
-      <b>51</b> relevant lines.
-      <span class="green"><b>35</b> lines covered</span> and
-      <span class="red"><b>16</b> lines missed.</span>
+      <b>56</b> relevant lines.
+      <span class="green"><b>37</b> lines covered</span> and
+      <span class="red"><b>19</b> lines missed.</span>
     </div>
 
     
@@ -10303,7 +10303,7 @@
 
             
 
-            <code class="ruby">  def embed_id_from_youtube_url</code>
+            <code class="ruby">  YOUTUBE_ID_REGEX = %r{(?:https://www\.youtube\.com(?:/embed/|/watch\?v=)|https://youtu\.be/)([a-zA-Z0-9_-]{11})}</code>
           </li>
         </div>
       
@@ -10313,29 +10313,29 @@
 
             
 
-            <code class="ruby">    # 埋め込み形式でIDを抜き出し（プレイヤー用）</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="27">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="27">
             
 
             
 
-            <code class="ruby">    source_url.split(&quot;/&quot;).last if youtube?</code>
+            <code class="ruby">  # このメソッドは前回提案したものから変更ありません。</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="28">
+          <li class="covered" data-hits="1" data-linenumber="28">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">  def youtube_video_id</code>
           </li>
         </div>
       
@@ -10345,19 +10345,17 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    # youtube?メソッドがtrueで、かつsource_urlが存在する場合のみ処理を実行します</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="30">
-            
-              <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="30">
             
 
             
 
-            <code class="ruby">  def only_id_from_youtube_url</code>
+            <code class="ruby">    return nil unless youtube? &amp;&amp; source_url.present?</code>
           </li>
         </div>
       
@@ -10367,27 +10365,27 @@
 
             
 
-            <code class="ruby">    # IDだけを抜き出し（サムネイル用）</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="32">
+          <li class="never" data-hits="" data-linenumber="32">
             
 
             
 
-            <code class="ruby">    embed_id_from_youtube_url.split(&quot;?&quot;).first</code>
+            <code class="ruby">    # source_urlが正規表現にマッチするかどうかを調べます</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
+          <li class="missed" data-hits="0" data-linenumber="33">
             
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    match = source_url.match(YOUTUBE_ID_REGEX)</code>
           </li>
         </div>
       
@@ -10402,38 +10400,32 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="35">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="35">
             
 
             
 
-            <code class="ruby">  def x_to_twitter_change_url</code>
+            <code class="ruby">    # マッチした場合、キャプチャされた部分（動画ID）を返します</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="36">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="36">
             
 
             
 
-            <code class="ruby">    return unless twitter? &amp;&amp; source_url.match?(/\Ahttps:\/\/x\.com\//)</code>
+            <code class="ruby">    # マッチしない場合はnilを返します</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="37">
-            
-              <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="37">
             
 
             
 
-            <code class="ruby">    source_url.sub(&quot;x.com&quot;, &quot;twitter.com&quot;)</code>
+            <code class="ruby">    match[1] if match</code>
           </li>
         </div>
       
@@ -10465,19 +10457,17 @@
 
             
 
-            <code class="ruby">  def calculate_video_timestamp</code>
+            <code class="ruby">  def embed_id_from_youtube_url</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="41">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="41">
             
 
             
 
-            <code class="ruby">    if source_type == &quot;youtube&quot;</code>
+            <code class="ruby">    # 埋め込み形式でIDを抜き出し（プレイヤー用）</code>
           </li>
         </div>
       
@@ -10489,7 +10479,7 @@
 
             
 
-            <code class="ruby">      time = video_timestamp.split(&quot;:&quot;).map(&amp;:to_i)</code>
+            <code class="ruby">    source_url.split(&quot;/&quot;).last if youtube?</code>
           </li>
         </div>
       
@@ -10499,12 +10489,176 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="44">
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="44">
+          <li class="covered" data-hits="1" data-linenumber="45">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def only_id_from_youtube_url</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
+            
+
+            
+
+            <code class="ruby">    # IDだけを抜き出し（サムネイル用）</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="47">
+            
+
+            
+
+            <code class="ruby">    embed_id_from_youtube_url.split(&quot;=&quot;).last</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="48">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="49">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="50">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def x_to_twitter_change_url</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="51">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    return unless twitter? &amp;&amp; source_url.match?(/\Ahttps:\/\/x\.com\//)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="52">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    source_url.sub(&quot;x.com&quot;, &quot;twitter.com&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="53">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="54">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="55">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def calculate_video_timestamp</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="56">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    if source_type == &quot;youtube&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="57">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      time = video_timestamp.split(&quot;:&quot;).map(&amp;:to_i)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="58">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="59">
             
               <span class="hits">2</span>
             
@@ -10516,7 +10670,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="45">
+          <li class="never" data-hits="" data-linenumber="60">
             
 
             
@@ -10526,7 +10680,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="46">
+          <li class="missed" data-hits="0" data-linenumber="61">
             
 
             
@@ -10536,7 +10690,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="47">
+          <li class="never" data-hits="" data-linenumber="62">
             
 
             
@@ -10546,7 +10700,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="48">
+          <li class="covered" data-hits="2" data-linenumber="63">
             
               <span class="hits">2</span>
             
@@ -10558,7 +10712,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
+          <li class="never" data-hits="" data-linenumber="64">
             
 
             
@@ -10568,7 +10722,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="50">
+          <li class="missed" data-hits="0" data-linenumber="65">
             
 
             
@@ -10578,7 +10732,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="51">
+          <li class="never" data-hits="" data-linenumber="66">
             
 
             
@@ -10588,7 +10742,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="52">
+          <li class="missed" data-hits="0" data-linenumber="67">
             
 
             
@@ -10598,7 +10752,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="53">
+          <li class="never" data-hits="" data-linenumber="68">
             
 
             
@@ -10608,7 +10762,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="54">
+          <li class="never" data-hits="" data-linenumber="69">
             
 
             
@@ -10618,172 +10772,12 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="55">
+          <li class="never" data-hits="" data-linenumber="70">
             
 
             
 
             <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="56">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="57">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def self.ransackable_attributes(auth_object = nil)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="58">
-            
-
-            
-
-            <code class="ruby">    [ &quot;title&quot; ]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="59">
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="60">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="61">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def self.ransackable_associations(auth_object = nil)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="62">
-            
-
-            
-
-            <code class="ruby">    []</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="63">
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="64">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="65">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  private</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="66">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="67">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def assign_categories</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="10" data-linenumber="68">
-            
-              <span class="hits">10</span>
-            
-
-            
-
-            <code class="ruby">    return if category_names.blank?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="69">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="70">
-            
-
-            
-
-            <code class="ruby">    old_categories = categories.to_a</code>
           </li>
         </div>
       
@@ -10798,12 +10792,14 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="72">
+          <li class="covered" data-hits="1" data-linenumber="72">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    new_categories = category_names.split(&quot;,&quot;).map do |name|</code>
+            <code class="ruby">  def self.ransackable_attributes(auth_object = nil)</code>
           </li>
         </div>
       
@@ -10813,7 +10809,7 @@
 
             
 
-            <code class="ruby">      Category.find_or_create_by(name: name.strip)</code>
+            <code class="ruby">    [ &quot;title&quot; ]</code>
           </li>
         </div>
       
@@ -10823,7 +10819,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -10838,12 +10834,14 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="76">
+          <li class="covered" data-hits="1" data-linenumber="76">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    self.categories = new_categories</code>
+            <code class="ruby">  def self.ransackable_associations(auth_object = nil)</code>
           </li>
         </div>
       
@@ -10853,7 +10851,7 @@
 
             
 
-            <code class="ruby">    removed_categories = old_categories - new_categories</code>
+            <code class="ruby">    []</code>
           </li>
         </div>
       
@@ -10863,57 +10861,63 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="79">
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="79">
+          <li class="covered" data-hits="1" data-linenumber="80">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    removed_categories.each do |category|</code>
+            <code class="ruby">  private</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="80">
+          <li class="never" data-hits="" data-linenumber="81">
             
 
             
 
-            <code class="ruby">      if category.reload.technique_categories.empty?</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="81">
+          <li class="covered" data-hits="1" data-linenumber="82">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        category.destroy</code>
+            <code class="ruby">  def assign_categories</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="82">
+          <li class="covered" data-hits="10" data-linenumber="83">
+            
+              <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="83">
-            
-
-            
-
-            <code class="ruby">    end</code>
+            <code class="ruby">    return if category_names.blank?</code>
           </li>
         </div>
       
@@ -10923,12 +10927,22 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="85">
+          <li class="missed" data-hits="0" data-linenumber="85">
+            
+
+            
+
+            <code class="ruby">    old_categories = categories.to_a</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="86">
             
 
             
@@ -10938,80 +10952,62 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="86">
-            
-              <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="87">
             
 
             
 
-            <code class="ruby">  def send_notifications_for_followers</code>
+            <code class="ruby">    new_categories = category_names.split(&quot;,&quot;).map do |name|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="87">
-            
-              <span class="hits">10</span>
+          <li class="missed" data-hits="0" data-linenumber="88">
             
 
             
 
-            <code class="ruby">    if categories.any?</code>
+            <code class="ruby">      Category.find_or_create_by(name: name.strip)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="88">
-            
-              <span class="hits">4</span>
+          <li class="never" data-hits="" data-linenumber="89">
             
 
             
 
-            <code class="ruby">      categories.each do |category|</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="89">
-            
-              <span class="hits">4</span>
+          <li class="never" data-hits="" data-linenumber="90">
             
 
             
 
-            <code class="ruby">        category.followers.where.not(id: user_id).each do |follower|</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="90">
+          <li class="missed" data-hits="0" data-linenumber="91">
             
 
             
 
-            <code class="ruby">          notification = Notification.create!(</code>
+            <code class="ruby">    self.categories = new_categories</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="91">
+          <li class="missed" data-hits="0" data-linenumber="92">
             
 
             
 
-            <code class="ruby">            user: follower,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="92">
-            
-
-            
-
-            <code class="ruby">            notifiable: self,</code>
+            <code class="ruby">    removed_categories = old_categories - new_categories</code>
           </li>
         </div>
       
@@ -11021,17 +11017,17 @@
 
             
 
-            <code class="ruby">            message: &quot;#{category.name}に新しいテクニック「#{title}」が投稿されました。&quot;</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="94">
+          <li class="missed" data-hits="0" data-linenumber="94">
             
 
             
 
-            <code class="ruby">          )</code>
+            <code class="ruby">    removed_categories.each do |category|</code>
           </li>
         </div>
       
@@ -11041,17 +11037,17 @@
 
             
 
-            <code class="ruby">          NotificationMailer.new_technique_notification(follower, self, category).deliver_later</code>
+            <code class="ruby">      if category.reload.technique_categories.empty?</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="96">
+          <li class="missed" data-hits="0" data-linenumber="96">
             
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">        category.destroy</code>
           </li>
         </div>
       
@@ -11071,12 +11067,170 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="99">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="100">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="101">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def send_notifications_for_followers</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="10" data-linenumber="102">
+            
+              <span class="hits">10</span>
+            
+
+            
+
+            <code class="ruby">    if categories.any?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="103">
+            
+              <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      categories.each do |category|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="104">
+            
+              <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">        category.followers.where.not(id: user_id).each do |follower|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="105">
+            
+
+            
+
+            <code class="ruby">          notification = Notification.create!(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="106">
+            
+
+            
+
+            <code class="ruby">            user: follower,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="107">
+            
+
+            
+
+            <code class="ruby">            notifiable: self,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="108">
+            
+
+            
+
+            <code class="ruby">            message: &quot;#{category.name}に新しいテクニック「#{title}」が投稿されました。&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="109">
+            
+
+            
+
+            <code class="ruby">          )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="110">
+            
+
+            
+
+            <code class="ruby">          NotificationMailer.new_technique_notification(follower, self, category).deliver_later</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="111">
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="112">
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="113">
+            
+
+            
+
             <code class="ruby">    else</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="99">
+          <li class="covered" data-hits="6" data-linenumber="114">
             
               <span class="hits">6</span>
             
@@ -11088,7 +11242,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="100">
+          <li class="never" data-hits="" data-linenumber="115">
             
 
             
@@ -11098,7 +11252,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="101">
+          <li class="never" data-hits="" data-linenumber="116">
             
 
             
@@ -11108,7 +11262,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="102">
+          <li class="never" data-hits="" data-linenumber="117">
             
 
             

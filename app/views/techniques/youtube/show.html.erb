@@ -4,7 +4,7 @@
   <div class="w-full md:w-2/3 md:pr-6">
     <div class="w-full aspect-video bg-gray-800">
       <iframe class="w-full aspect-video"
-              src="https://www.youtube.com/embed/<%= @technique.embed_id_from_youtube_url %>&amp;start=<%= @technique.calculate_video_timestamp %>"
+              src="https://www.youtube.com/embed/<%= @technique.youtube_video_id %>&amp;start=<%= @technique.calculate_video_timestamp %>"
               frameborder="0"
               allowfullscreen>
       </iframe>
@@ -21,7 +21,7 @@
 
     <div class="mt-2 flex space-x-3">
 
-      <a href="https://www.youtube.com/watch?v=<%= @technique.only_id_from_youtube_url %>" class="btn bg-red-500 text-white" target="_blank" rel="noopener noreferrer">YouTubeへ</a>
+      <a href="https://www.youtube.com/watch?v=<%= @technique.youtube_video_id %>" class="btn bg-red-500 text-white" target="_blank" rel="noopener noreferrer">YouTubeへ</a>
       <%= link_to "https://twitter.com/intent/tweet?url=#{request.url}%0a&text=#{CGI.escape("#{@technique.title}")}&hashtags=#{CGI.escape('VTACTICS')}", target: '_blank', rel: "noopener noreferrer" do %>
         <div class="btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
@@ -58,7 +58,7 @@
     <% @recommend_techniques.each do |technique| %>
 
       <div class="flex space-x-3">
-        <img class="w-32 h-18 object-cover rounded-lg bg-gray-300" src="https://img.youtube.com/vi/<%= technique.only_id_from_youtube_url %>/maxresdefault.jpg">
+        <img class="w-32 h-18 object-cover rounded-lg bg-gray-300" src="https://img.youtube.com/vi/<%= technique.youtube_video_id %>/maxresdefault.jpg">
         <div class="flex-1">
           <span><%= link_to technique.title, techniques_youtube_path(technique), class: "text-sm font-medium" %></span>
         </div>
