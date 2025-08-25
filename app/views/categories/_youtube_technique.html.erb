@@ -8,7 +8,7 @@
             <%# youtube %>
             <div class="shrink-0">
               <iframe class="w-full aspect-video"
-                      src="https://www.youtube.com/embed/<%= technique.embed_id_from_youtube_url %>&start=<%= technique.calculate_video_timestamp %>"
+                      src="https://www.youtube.com/embed/<%= technique.youtube_video_id %>?start=<%= technique.calculate_video_timestamp %>"
                       frameborder="0"
                       allowfullscreen>
               </iframe>

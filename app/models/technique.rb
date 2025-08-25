@@ -22,14 +22,14 @@ class Technique < ApplicationRecord
 
   after_create_commit :send_notifications_for_followers
 
-  def embed_id_from_youtube_url
-    # 埋め込み形式でIDを抜き出し（プレイヤー用）
-    source_url.split("/").last if youtube?
-  end
+  YOUTUBE_ID_REGEX = %r{(?:https://www\.youtube\.com(?:/embed/|/watch\?v=)|https://youtu\.be/)([a-zA-Z0-9_-]{11})}
 
-  def only_id_from_youtube_url
-    # IDだけを抜き出し（サムネイル用）
-    embed_id_from_youtube_url.split("?").first
+  def youtube_video_id
+    return nil unless youtube? && source_url.present?
+
+    match = source_url.match(YOUTUBE_ID_REGEX)
+
+    match[1] if match
   end
 
   def x_to_twitter_change_url
