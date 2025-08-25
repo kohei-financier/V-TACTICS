@@ -100,4 +100,42 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "self.from_omniauth(auth)メソッドのチェック" do
+    let(:auth) do
+      OmniAuth::AuthHash.new({
+        provider: "google_oath2",
+        uid: "12345678",
+        info: {
+          name: "テストユーザー",
+          email: "test@test.com"
+        }
+      })
+    end
+
+    context "ユーザーがまだサインアップしていない場合" do
+      it "新しいユーザーを作成すること" do
+        expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
+      end
+      it "作成された情報が正しいこと" do
+        user = User.from_omniauth(auth)
+        expect(user.provider).to eq("google_oath2")
+        expect(user.uid).to eq("12345678")
+        expect(user.name).to eq("テストユーザー")
+        expect(user.email).to eq("test@test.com")
+      end
+    end
+
+    context "ユーザーが既にサインアップ済みの場合" do
+      let!(:signed_user) { create(:user, provider: "google_oath2", uid: "12345678") }
+
+      it "新しいユーザーが作成されないこと" do
+        expect { User.from_omniauth(auth) }.not_to change(User, :count)
+      end
+      it "既存のユーザーのサインアップと同値であることを確認すること" do
+        user = User.from_omniauth(auth)
+        expect(user).to eq(signed_user)
+      end
+    end
+  end
 end
