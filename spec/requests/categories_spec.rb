@@ -21,8 +21,8 @@ RSpec.describe "Categories", type: :request do
 
   describe "カテゴリー詳細ページを取得する(show)" do
     let!(:category) { create(:category) }
-    let!(:youtube_technique) { create(:technique, :youtube, category_ids: [category.id]) }
-    let!(:twitter_technique) { create(:technique, :twitter, category_ids: [category.id]) }
+    let!(:youtube_technique) { create(:technique, :youtube, category_ids: [ category.id ]) }
+    let!(:twitter_technique) { create(:technique, :twitter, category_ids: [ category.id ]) }
 
     before do
       get category_path(category)
