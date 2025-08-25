@@ -24,27 +24,12 @@ class Technique < ApplicationRecord
 
   YOUTUBE_ID_REGEX = %r{(?:https://www\.youtube\.com(?:/embed/|/watch\?v=)|https://youtu\.be/)([a-zA-Z0-9_-]{11})}
 
-  # このメソッドは前回提案したものから変更ありません。
   def youtube_video_id
-    # youtube?メソッドがtrueで、かつsource_urlが存在する場合のみ処理を実行します
     return nil unless youtube? && source_url.present?
 
-    # source_urlが正規表現にマッチするかどうかを調べます
     match = source_url.match(YOUTUBE_ID_REGEX)
 
-    # マッチした場合、キャプチャされた部分（動画ID）を返します
-    # マッチしない場合はnilを返します
     match[1] if match
-  end
-
-  def embed_id_from_youtube_url
-    # 埋め込み形式でIDを抜き出し（プレイヤー用）
-    source_url.split("/").last if youtube?
-  end
-
-  def only_id_from_youtube_url
-    # IDだけを抜き出し（サムネイル用）
-    embed_id_from_youtube_url.split("=").last
   end
 
   def x_to_twitter_change_url
