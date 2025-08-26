@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-25T16:31:58+09:00">2025-08-25T16:31:58+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-26T15:32:12+09:00">2025-08-26T15:32:12+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,7 +22,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  30.36%
+  30.55%
 </span>
 
      </span>
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>560</b> relevant lines,
-    <span class="green"><b>170</b> lines covered</span> and
-    <span class="red"><b>390</b> lines missed. </span>
+    <b>563</b> relevant lines,
+    <span class="green"><b>172</b> lines covered</span> and
+    <span class="red"><b>391</b> lines missed. </span>
     (<span class="red">
-  30.36%
+  30.55%
 </span>
 )
   </div>
@@ -104,12 +104,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#618d7f9da8fb1a9019a6e03333ce86c1c04b140f" class="src_link" title="app/controllers/categories_controller.rb">app/controllers/categories_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">12</td>
-            <td class="cell--number">8</td>
-            <td class="cell--number">8</td>
-            <td class="cell--number">0</td>
-            <td class="cell--number">1.63</td>
+            <td class="green strong cell--number t-file__coverage">90.91 %</td>
+            <td class="cell--number">18</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">1</td>
+            <td class="cell--number">1.55</td>
             
           </tr>
         
@@ -543,14 +543,14 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="red">
-  18.57%
+  19.08%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.26
+         0.27
        </span>
     </span> hits/line
     )
@@ -563,11 +563,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>280</b> relevant lines,
-    <span class="green"><b>52</b> lines covered</span> and
-    <span class="red"><b>228</b> lines missed. </span>
+    <b>283</b> relevant lines,
+    <span class="green"><b>54</b> lines covered</span> and
+    <span class="red"><b>229</b> lines missed. </span>
     (<span class="red">
-  18.57%
+  19.08%
 </span>
 )
   </div>
@@ -603,12 +603,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#618d7f9da8fb1a9019a6e03333ce86c1c04b140f" class="src_link" title="app/controllers/categories_controller.rb">app/controllers/categories_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">12</td>
-            <td class="cell--number">8</td>
-            <td class="cell--number">8</td>
-            <td class="cell--number">0</td>
-            <td class="cell--number">1.63</td>
+            <td class="green strong cell--number t-file__coverage">90.91 %</td>
+            <td class="cell--number">18</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">1</td>
+            <td class="cell--number">1.55</td>
             
           </tr>
         
@@ -1796,7 +1796,7 @@
     <h3>app/controllers/categories_controller.rb</h3>
     <h4>
       <span class="green">
-  100.0%
+  90.91%
 </span>
 
       lines covered
@@ -1805,9 +1805,9 @@
     
 
     <div class="t-line-summary">
-      <b>8</b> relevant lines.
-      <span class="green"><b>8</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>11</b> relevant lines.
+      <span class="green"><b>10</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
 
     
@@ -1905,19 +1905,17 @@
 
             
 
-            <code class="ruby">    @techniques = @category.techniques.order(created_at: :desc)</code>
+            <code class="ruby">    @techniques = @category.techniques</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="9">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="9">
             
 
             
 
-            <code class="ruby">    @youtube_categories_techniques = @techniques.where(source_type: &quot;youtube&quot;)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1929,12 +1927,78 @@
 
             
 
+            <code class="ruby">    if params[:most_favorites] == &quot;true&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="11">
+            
+
+            
+
+            <code class="ruby">      @techniques = @techniques.most_favorites</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="13">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      @techniques = @techniques.order(created_at: :desc)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="14">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="15">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    @youtube_categories_techniques = @techniques.where(source_type: &quot;youtube&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="16">
+            
+              <span class="hits">2</span>
+            
+
+            
+
             <code class="ruby">    @twitter_categories_techniques = @techniques.where(source_type: &quot;twitter&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="11">
+          <li class="never" data-hits="" data-linenumber="17">
             
 
             
@@ -1944,7 +2008,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="12">
+          <li class="never" data-hits="" data-linenumber="18">
             
 
             

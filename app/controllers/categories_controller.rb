@@ -5,7 +5,13 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @techniques = @category.techniques.order(created_at: :desc)
+    @techniques = @category.techniques
+
+    if params[:most_favorites] == "true"
+      @techniques = @techniques.most_favorites
+    else
+      @techniques = @techniques.order(created_at: :desc)
+    end
     @youtube_categories_techniques = @techniques.where(source_type: "youtube")
     @twitter_categories_techniques = @techniques.where(source_type: "twitter")
   end

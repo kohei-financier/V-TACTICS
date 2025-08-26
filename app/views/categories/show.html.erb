@@ -31,9 +31,9 @@
 
       表示順：
       <div class="join">
-        <%= link_to "新着順", techniques_path, class: "join-item btn btn-sm #{'btn-success' if new_active}" %>
+        <%= link_to "新着順", category_path(@category), class: "join-item btn btn-sm #{'btn-success' if new_active}" %>
 
-        <%= link_to "お気に入り数順", techniques_path(most_favorites: "true"), class: "join-item btn btn-sm #{'btn-warning' if favorites_active}" %>
+        <%= link_to "お気に入り数順", category_path(@category, most_favorites: "true"), class: "join-item btn btn-sm #{'btn-warning' if favorites_active}" %>
       </div>
     </div>
 
@@ -62,8 +62,8 @@
 
       表示順：
       <div class="join">
-        <%= link_to "新着順", techniques_path, class: "join-item btn btn-sm #{'btn-success' if new_active}" %>
-        <%= link_to "お気に入り数順", techniques_path(most_favorites: "true"), class: "join-item btn btn-sm #{'btn-warning' if favorites_active}" %>
+        <%= link_to "新着順", category_path(@category), class: "join-item btn btn-sm #{'btn-success' if new_active}" %>
+        <%= link_to "お気に入り数順", category_path(@category, most_favorites: "true"), class: "join-item btn btn-sm #{'btn-warning' if favorites_active}" %>
       </div>
     </div>
 
