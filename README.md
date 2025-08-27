@@ -121,9 +121,10 @@ VALORANTのテクニックはYoutubeとXに投稿されていることが多い�
 | API   | GoogleAPI（ログイン時） / YoutubeAPI（テクニック投稿時）       |
 | コード管理 | Git / GitHub                |
 
-## 画面遷移図
+## 画面遷移図（初期構想）
 [Figma](https://www.figma.com/design/sg79BYQysGnZ3rH7HbFXIe/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=ngO00vTTUwk5as8I-1)
 
 ## ER図
-[dbdiagram](https://dbdiagram.io/d/valorant_portal-67c56c7a263d6cf9a0032850)
-[![Image from Gyazo](https://i.gyazo.com/6cdd2c0680669c83647e487ac8af32b1.png)](https://gyazo.com/6cdd2c0680669c83647e487ac8af32b1)
+[dbdiagram](https://dbdiagram.io/d/V-TACTICS-6815d6921ca52373f54b3c25)
+<img width="1247" height="776" alt="V-TACTICS" src="https://github.com/user-attachments/assets/6ae8b139-1ee1-4d9e-9a1a-3533096f1f77" />
+
