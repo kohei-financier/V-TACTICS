@@ -1,12 +1,16 @@
 class TechniquesController < ApplicationController
   def index
+    # まとめて記載
+    most_favorites_techniques = Technique.most_favorites.includes(:categories)
+
     if params[:most_favorites]
-      @techniques = Technique.most_favorites
+      @techniques = most_favorites_techniques
     else
-      @techniques = Technique.includes(:user).order(created_at: :desc)
+      @techniques = Technique.includes(:categories).order(created_at: :desc)
     end
 
-    @swiper_techniques = Technique.most_favorites.limit(5)
+    @swiper_youtube_techniques = most_favorites_techniques.where(source_type: "youtube").limit(5)
+
     @youtube_techniques = @techniques.where(source_type: "youtube").limit(6)
     @twitter_techniques = @techniques.where(source_type: "twitter").limit(6)
 
