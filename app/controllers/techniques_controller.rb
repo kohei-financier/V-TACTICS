@@ -22,7 +22,7 @@ class TechniquesController < ApplicationController
 
   def search
     @q = Technique.ransack(params[:q])
-    @results = @q.result(distinct: true).includes(:user)
+    @results = @q.result(distinct: true).includes(:categories)
   end
 
   def favorites
