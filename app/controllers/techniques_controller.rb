@@ -26,7 +26,7 @@ class TechniquesController < ApplicationController
   end
 
   def favorites
-    @favorite_techniques = current_user.favorite_techniques.includes(:user)
+    @favorite_techniques = current_user.favorite_techniques.includes(:categories)
     @folders = current_user.folders.includes(:user)
 
     @folder = Folder.new
