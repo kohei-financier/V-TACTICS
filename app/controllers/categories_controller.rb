@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @techniques = @category.techniques
+    @techniques = @category.techniques.includes(:categories)
 
     if params[:most_favorites] == "true"
       @techniques = @techniques.most_favorites
