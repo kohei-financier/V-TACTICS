@@ -4,8 +4,7 @@
 <div class="my-10">
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
-    <% youtube_techniques = @swiper_techniques.where(source_type: "youtube") %>
-    <% youtube_techniques.each do |technique| %>
+    <% @swiper_youtube_techniques.each do |technique| %>
       <div class="swiper-slide mr-[30px] mb-8">
       <%= link_to techniques_youtube_path(technique) do %>
         <img src="https://img.youtube.com/vi/<%= technique.youtube_video_id %>/maxresdefault.jpg">

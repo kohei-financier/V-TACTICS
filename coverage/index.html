@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-26T15:32:12+09:00">2025-08-26T15:32:12+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-08-28T20:50:48+09:00">2025-08-28T20:50:48+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,14 +22,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  30.55%
+  30.67%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.67
+         0.68
        </span>
     </span> hits/line
     )
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>563</b> relevant lines,
-    <span class="green"><b>172</b> lines covered</span> and
+    <b>564</b> relevant lines,
+    <span class="green"><b>173</b> lines covered</span> and
     <span class="red"><b>391</b> lines missed. </span>
     (<span class="red">
-  30.55%
+  30.67%
 </span>
 )
   </div>
@@ -181,12 +181,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#c9f907e32a86400438928fce472e5023653536e8" class="src_link" title="app/controllers/techniques_controller.rb">app/controllers/techniques_controller.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">57.14 %</td>
-            <td class="cell--number">46</td>
-            <td class="cell--number">28</td>
-            <td class="cell--number">16</td>
+            <td class="red strong cell--number t-file__coverage">58.62 %</td>
+            <td class="cell--number">50</td>
+            <td class="cell--number">29</td>
+            <td class="cell--number">17</td>
             <td class="cell--number">12</td>
-            <td class="cell--number">0.89</td>
+            <td class="cell--number">0.93</td>
             
           </tr>
         
@@ -543,7 +543,7 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="red">
-  19.08%
+  19.37%
 </span>
 
      </span>
@@ -563,11 +563,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>283</b> relevant lines,
-    <span class="green"><b>54</b> lines covered</span> and
+    <b>284</b> relevant lines,
+    <span class="green"><b>55</b> lines covered</span> and
     <span class="red"><b>229</b> lines missed. </span>
     (<span class="red">
-  19.08%
+  19.37%
 </span>
 )
   </div>
@@ -680,12 +680,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#c9f907e32a86400438928fce472e5023653536e8" class="src_link" title="app/controllers/techniques_controller.rb">app/controllers/techniques_controller.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">57.14 %</td>
-            <td class="cell--number">46</td>
-            <td class="cell--number">28</td>
-            <td class="cell--number">16</td>
+            <td class="red strong cell--number t-file__coverage">58.62 %</td>
+            <td class="cell--number">50</td>
+            <td class="cell--number">29</td>
+            <td class="cell--number">17</td>
             <td class="cell--number">12</td>
-            <td class="cell--number">0.89</td>
+            <td class="cell--number">0.93</td>
             
           </tr>
         
@@ -1905,7 +1905,7 @@
 
             
 
-            <code class="ruby">    @techniques = @category.techniques</code>
+            <code class="ruby">    @techniques = @category.techniques.includes(:categories)</code>
           </li>
         </div>
       
@@ -4383,7 +4383,7 @@
     <h3>app/controllers/techniques_controller.rb</h3>
     <h4>
       <span class="red">
-  57.14%
+  58.62%
 </span>
 
       lines covered
@@ -4392,8 +4392,8 @@
     
 
     <div class="t-line-summary">
-      <b>28</b> relevant lines.
-      <span class="green"><b>16</b> lines covered</span> and
+      <b>29</b> relevant lines.
+      <span class="green"><b>17</b> lines covered</span> and
       <span class="red"><b>12</b> lines missed.</span>
     </div>
 
@@ -4429,24 +4429,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="3">
+          <li class="never" data-hits="" data-linenumber="3">
+            
+
+            
+
+            <code class="ruby">    # まとめて記載</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="4">
             
               <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">    if params[:most_favorites]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="4">
-            
-
-            
-
-            <code class="ruby">      @techniques = Technique.most_favorites</code>
+            <code class="ruby">    most_favorites_techniques = Technique.most_favorites.includes(:categories)</code>
           </li>
         </div>
       
@@ -4456,7 +4456,7 @@
 
             
 
-            <code class="ruby">    else</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4468,17 +4468,17 @@
 
             
 
-            <code class="ruby">      @techniques = Technique.includes(:user).order(created_at: :desc)</code>
+            <code class="ruby">    if params[:most_favorites]</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="7">
+          <li class="missed" data-hits="0" data-linenumber="7">
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      @techniques = most_favorites_techniques</code>
           </li>
         </div>
       
@@ -4488,7 +4488,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    else</code>
           </li>
         </div>
       
@@ -4500,36 +4500,22 @@
 
             
 
-            <code class="ruby">    @swiper_techniques = Technique.most_favorites.limit(5)</code>
+            <code class="ruby">      @techniques = Technique.includes(:categories).order(created_at: :desc)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="10">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="10">
             
 
             
 
-            <code class="ruby">    @youtube_techniques = @techniques.where(source_type: &quot;youtube&quot;).limit(6)</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="11">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    @twitter_techniques = @techniques.where(source_type: &quot;twitter&quot;).limit(6)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="12">
+          <li class="never" data-hits="" data-linenumber="11">
             
 
             
@@ -4539,14 +4525,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="13">
+          <li class="covered" data-hits="2" data-linenumber="12">
             
               <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">    @beginner_categories  = Category.beginner</code>
+            <code class="ruby">    @swiper_youtube_techniques = most_favorites_techniques.where(source_type: &quot;youtube&quot;).limit(5)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="13">
+            
+
+            
+
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4558,7 +4554,7 @@
 
             
 
-            <code class="ruby">    @agents_categories = Category.agents</code>
+            <code class="ruby">    @youtube_techniques = @techniques.where(source_type: &quot;youtube&quot;).limit(6)</code>
           </li>
         </div>
       
@@ -4570,12 +4566,58 @@
 
             
 
+            <code class="ruby">    @twitter_techniques = @techniques.where(source_type: &quot;twitter&quot;).limit(6)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="16">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="17">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    @beginner_categories  = Category.beginner</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="18">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    @agents_categories = Category.agents</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="19">
+            
+              <span class="hits">2</span>
+            
+
+            
+
             <code class="ruby">    @maps_categories = Category.maps</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="16">
+          <li class="covered" data-hits="2" data-linenumber="20">
             
               <span class="hits">2</span>
             
@@ -4587,7 +4629,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="17">
+          <li class="never" data-hits="" data-linenumber="21">
             
 
             
@@ -4597,7 +4639,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="18">
+          <li class="never" data-hits="" data-linenumber="22">
             
 
             
@@ -4607,7 +4649,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
+          <li class="covered" data-hits="1" data-linenumber="23">
             
               <span class="hits">1</span>
             
@@ -4619,7 +4661,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="20">
+          <li class="missed" data-hits="0" data-linenumber="24">
             
 
             
@@ -4629,64 +4671,22 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="21">
-            
-
-            
-
-            <code class="ruby">    @results = @q.result(distinct: true).includes(:user)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="22">
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="23">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="24">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def favorites</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="missed" data-hits="0" data-linenumber="25">
             
 
             
 
-            <code class="ruby">    @favorite_techniques = current_user.favorite_techniques.includes(:user)</code>
+            <code class="ruby">    @results = @q.result(distinct: true).includes(:categories)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="26">
             
 
             
 
-            <code class="ruby">    @folders = current_user.folders.includes(:user)</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -4701,12 +4701,14 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="28">
+          <li class="covered" data-hits="1" data-linenumber="28">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    @folder = Folder.new</code>
+            <code class="ruby">  def favorites</code>
           </li>
         </div>
       
@@ -4716,12 +4718,22 @@
 
             
 
-            <code class="ruby">    @my_folders = current_user.folders.includes(:user)</code>
+            <code class="ruby">    @favorite_techniques = current_user.favorite_techniques.includes(:categories)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="30">
+          <li class="missed" data-hits="0" data-linenumber="30">
+            
+
+            
+
+            <code class="ruby">    @folders = current_user.folders.includes(:user)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
             
 
             
@@ -4731,7 +4743,37 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="31">
+          <li class="missed" data-hits="0" data-linenumber="32">
+            
+
+            
+
+            <code class="ruby">    @folder = Folder.new</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="33">
+            
+
+            
+
+            <code class="ruby">    @my_folders = current_user.folders.includes(:user)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="34">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="35">
             
 
             
@@ -4741,7 +4783,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="32">
+          <li class="never" data-hits="" data-linenumber="36">
             
 
             
@@ -4751,7 +4793,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
+          <li class="never" data-hits="" data-linenumber="37">
             
 
             
@@ -4761,7 +4803,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="34">
+          <li class="covered" data-hits="1" data-linenumber="38">
             
               <span class="hits">1</span>
             
@@ -4773,7 +4815,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="35">
+          <li class="missed" data-hits="0" data-linenumber="39">
             
 
             
@@ -4783,7 +4825,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="36">
+          <li class="never" data-hits="" data-linenumber="40">
             
 
             
@@ -4793,7 +4835,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="37">
+          <li class="missed" data-hits="0" data-linenumber="41">
             
 
             
@@ -4803,7 +4845,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="38">
+          <li class="missed" data-hits="0" data-linenumber="42">
             
 
             
@@ -4813,7 +4855,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="39">
+          <li class="never" data-hits="" data-linenumber="43">
             
 
             
@@ -4823,7 +4865,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="40">
+          <li class="never" data-hits="" data-linenumber="44">
             
 
             
@@ -4833,7 +4875,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="41">
+          <li class="never" data-hits="" data-linenumber="45">
             
 
             
@@ -4843,7 +4885,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="42">
+          <li class="covered" data-hits="1" data-linenumber="46">
             
               <span class="hits">1</span>
             
@@ -4855,7 +4897,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="43">
+          <li class="covered" data-hits="1" data-linenumber="47">
             
               <span class="hits">1</span>
             
@@ -4867,7 +4909,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="44">
+          <li class="missed" data-hits="0" data-linenumber="48">
             
 
             
@@ -4877,7 +4919,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="45">
+          <li class="never" data-hits="" data-linenumber="49">
             
 
             
@@ -4887,7 +4929,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="46">
+          <li class="never" data-hits="" data-linenumber="50">
             
 
             
