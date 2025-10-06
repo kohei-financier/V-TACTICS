@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Techniques", type: :request do
   describe "GET /techniques/search" do
-    let!(:technique1) { create(:technique, title: "テスト1") }
-    let!(:technique2) { create(:technique, title: "テスト2") }
+    let!(:technique1) { create(:technique, title: "テスト1", source_type: "youtube") }
+    let!(:technique2) { create(:technique, title: "テスト2", source_type: "twitter") }
 
     it "検索結果が正しく表示されること" do
       get search_techniques_path, params: { q: { title_cont: "テスト" } }
