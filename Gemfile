@@ -66,7 +66,7 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 3.3.2"
-gem "tailwindcss-ruby", "3.4.17"
+gem "tailwindcss-ruby", "3.4.19"
 
 gem "devise"
 gem "omniauth"
